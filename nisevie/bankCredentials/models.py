@@ -24,7 +24,8 @@ class SavingAccount(models.Model):
     interest_rates = models.FloatField(default=1.2)
     time_interval = models.IntegerField(verbose_name="Saving time frame")
     bank_account = models.ForeignKey(to=BankAccount, on_delete=models.CASCADE)
-
+    create_time = models.DateTimeField(auto_now = True)
+    
 class SavingsDetail(SavingAccount):
     pass
 

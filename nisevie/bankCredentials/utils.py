@@ -1,6 +1,11 @@
 # bank credentials controls
-from . models import AccountHolder as AH
 from random import randint as rand
+
+from . models import AccountHolder as acc_holder
+from . models import SavingsDetail as sd
+from . models import FixedDepositDetail as fxd
+from . models import BankAccount as bank_acc
+
 
 # generate otp
 def generate_otp():
@@ -12,11 +17,24 @@ def generate_otp():
 
 # customer login
 def customer_login(mobile_number):
-    user = AH.objects.get(mobile_number = mobile_number)
+    user = acc_holder.objects.get(mobile_number = mobile_number)
     if user:
         token = generate_otp()
         print(f"send _OTP_ {token}")
     else:
         print("Failed to process request")
 
+
+# create new customer saving details
+def new_customer_saving_plan(bank_acc_id, init_amount, rates, time_interval):
+    current_amount = init_amount
+    account = bank_acc.objects.get(id=bank_acc_id)
+    new_saving_plan = sd.objects.create(bank_account=account, time_interval=time_interval, interest_rates=rates, initial_amount=init_amount)
+
+
+# create new customer fixed deposit details
+def new_customer_fixed_saving_plan(bank_acc_id, init_amount, rates, time_interval):
+    current_amount = init_amount
+    account = bank_acc.objects.get(id=bank_acc_id)
+    new_saving_plan = fxd.objects.create(bank_account=account, time_interval=time_interval, interest_rates=rates, initial_amount=init_amount)
 
