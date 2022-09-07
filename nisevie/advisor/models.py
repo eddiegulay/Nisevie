@@ -26,3 +26,4 @@ class SavingPlan(models.Model):
     is_frequency_allowed = models.BooleanField(default=False)
     deposit_frequency = models.IntegerField(default=1)
     frequency_deposit_amount = models.BigIntegerField(default=0)
+    next_action_date = models.models.DateField(null=True, auto_now=False, auto_now_add=False)
