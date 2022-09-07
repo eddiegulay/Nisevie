@@ -38,3 +38,21 @@ def new_customer_fixed_saving_plan(bank_acc_id, init_amount, rates, time_interva
     account = bank_acc.objects.get(id=bank_acc_id)
     new_saving_plan = fxd.objects.create(bank_account=account, time_interval=time_interval, interest_rates=rates, initial_amount=init_amount)
 
+# move funds from and into account
+def deposit_into_account(acc_number: str, amount: float):
+    bank_account = bank_acc.objects.get(account_number = acc_number)
+    if bank_account is not None:
+        bank_account.current_balance = bank_account.current_balance + amount
+        bank_account.save()
+    else:
+        return False
+
+
+def withdraw_from_account(acc_number: str, amount: float):
+    bank_account = bank_acc.objects.get(account_number = acc_number)
+    if bank_account is not None:
+        if bank_account.current_balance > amount:
+            bank_account.current_balance = bank_account.current_balance - amount
+            bank_account.save()
+    else:
+        return False
