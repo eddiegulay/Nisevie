@@ -1,10 +1,13 @@
 from django.db import models
-from bankCredentials.models import BankAccount
+
+from nisevie.bankCredentials.models import BankAccount
+
 
 # Create your models here.
 class StreamCategory(models.Model):
     category_name = models.CharField(max_length=30)
     create_date = models.DateTimeField(auto_now=True)
+
 
 class Stream(models.Model):
     name = models.CharField(max_length=45)
@@ -16,9 +19,10 @@ class Stream(models.Model):
     least_expenditure = models.FloatField(default=0)
     time_delay = models.IntegerField(default=0, verbose_name="Time delay for the expenditure to occur in months")
 
+
 class SavingPlan(models.Model):
-    target_account =  models.ForeignKey(to=BankAccount, verbose_name=_("target account"), on_delete=models.CASCADE)
-    create_time = models.DateTimeField(auto_now = True)
+    target_account = models.ForeignKey(to=BankAccount, verbose_name="target account", on_delete=models.CASCADE)
+    create_time = models.DateTimeField(auto_now=True)
     time_interval = models.IntegerField(default=0)
     income_stream = models.ForeignKey(to=Stream, on_delete=models.CASCADE)
     initial_amount = models.BigIntegerField(default=0)
