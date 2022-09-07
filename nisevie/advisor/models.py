@@ -1,5 +1,5 @@
-from unicodedata import category
 from django.db import models
+from bankCredentials.models import BankAccount
 
 # Create your models here.
 class StreamCategory(models.Model):
@@ -15,3 +15,14 @@ class Stream(models.Model):
     can_save_amount = models.FloatField(default=0)
     least_expenditure = models.FloatField(default=0)
     time_delay = models.IntegerField(default=0, verbose_name="Time delay for the expenditure to occur in months")
+
+class SavingPlan(models.Model):
+    target_account =  models.ForeignKey(to=BankAccount, verbose_name=_("target account"), on_delete=models.CASCADE)
+    create_time = models.DateTimeField(auto_now = True)
+    time_interval = models.IntegerField(default=0)
+    income_stream = models.ForeignKey(to=Stream, on_delete=models.CASCADE)
+    initial_amount = models.BigIntegerField(default=0)
+    allowed_withdraw_date = models.DateTimeField()
+    is_frequency_allowed = models.BooleanField(default=False)
+    deposit_frequency = models.IntegerField(default=1)
+    frequency_deposit_amount = models.BigIntegerField(default=0)
