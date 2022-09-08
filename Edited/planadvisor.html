@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Nisevie</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="#" class="nav-link scrollto"><i class="bx bx-home"></i> <span>CRDB Main Page</span></a></li>
+        <li><a href="#" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Advisor</span></a></li>
+        <li><a href="#" class="nav-link scrollto active"><i class="bx bx-book-content"></i> <span>Create/Modify</span></a></li>
+        <li><a href="#" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Terminate</span></a></li>
+        <li><a href="#" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Agreement</span></a></li>
+        <li><a href="#" class="nav-link scrollto"><i class="bx bx-exit"></i> <span>Logout</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero" class="d-flex flex-column">
+    <div class="row mb-4" style="margin-left: 95px;">
+    <button type="button" class="btn btn-primary btn-sm" onclick="addSource()" style="margin-left:0;width: 10%;min-width: 61.20px" data-aos="zoom-in" data-aos-delay="100">Add Source</button>
+    <button type="button" class="btn btn-primary btn-sm" style="margin-left:20px;width: 10%;min-width:81px;min-height:32px" data-aos="zoom-in" data-aos-delay="100">Calculate</button>
+    <input class="form-control text-center" placeholder="Amount" style="margin-left:20px;width: 20%;min-width: 20%;" data-aos="zoom-in" data-aos-delay="100"/>  
+  </div>
+    <div class="row mb-4" id="addsource" style="overflow-y:auto;margin:auto;height:500px" data-aos="zoom-in" data-aos-delay="100">
+      <div style="width:350px;margin:30px auto auto auto" >
+        <form>
+          <!-- Text input -->
+          <div class="form-outline mb-4 text-center">
+            <label class="form-label text-center" for="form6Example3">Source</label>
+            <select name="place" style="margin: auto;width: 100%" id="form6Example3" class="form-control text-center">
+              <option value="volvo">Salary</option>
+              <option value="saab">Student Meals &amp; Accomodation</option>
+              <option value="opel">Other</option>
+            </select>
+          </div>
+        
+          <!-- Text input -->
+          <div class="form-outline mb-4 text-center">
+            <label class="form-label" for="form6Example4">Source Account</label>
+            <input type="text" class="form-control" />
+          </div>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4 text-center">
+            <label class="form-label" for="form6Example5">Deduction Plan</label>
+            <select style="margin: auto;width: 100%" id="amountType" class="form-control text-center" onclick="toggleDeductionPlan(this)">
+              <option value="opt1" >Same Amount Each time</option>
+              <option value="opt2">Different Amount Each time</option>
+            </select>
+          </div>
+        
+          <!-- Number input -->
+          <div class="form-outline mb-4 text-center" id="amount1">
+            <div class="col"><label class="form-label" for="form6Example6">Amount</label></div>
+            <input type="number" class="form-control" />
+          </div>
+
+          <!-- Number input -->
+          <div class="form-outline mb-4" id="amount2" style="display:none" >
+            <div class="row mb-4" style="margin-left: 95px">
+              <button type="button" class="btn btn-primary btn-sm" onclick="addAmount(this)" style="width:25%">Add</button>
+            </div>
+            <input type="number" class="form-control text-center" placeholder="Amount" style="width:75%;margin-left: 9px">
+          </div>
+
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline text-center">
+                <label class="form-label" for="form6Example1">From</label>
+                <input type="date" id="form6Example1" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-outline text-center">
+                <label class="form-label" for="form6Example2">To</label>
+                <input type="date" id="form6Example1" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    function toggleDeductionPlan(input) {
+      var y = input.parentNode.nextElementSibling;
+      var z = input.parentNode.nextElementSibling.nextElementSibling;
+
+      if (input.value === "opt1"){
+        y.style.display = "block";
+        z.style.display = "none";
+      }
+      else{
+        y.style.display = "none";
+        z.style.display = "block";
+      }
+    }
+    
+    function addAmount(input) {
+      input.parentNode.parentNode.insertAdjacentHTML(
+      'beforeend',
+      '<div class="row" style="margin-top:5px">\
+      <input type="number" class="form-control text-center" placeholder="Amount" style="width:70%;margin-left: 20px">\
+      <input type="button" value="Remove" onclick="removeRow(this)" class="btn btn-danger btn-sm" style="width:20%;margin-left: 10px">\
+      </div>'
+    )
+  }
+
+      function removeRow (input) {
+        input.parentNode.remove()
+      }
+
+      function removeSource (input) {
+        input.parentNode.remove()
+      }
+
+      function addSource(input){
+      document.querySelector('#addsource').insertAdjacentHTML(
+        'afterbegin',
+        '<div style="width:350px;margin:0 auto 20px auto" data-aos="zoom-in" data-aos-delay="100">\
+          <input type="button" value="Remove" onclick="removeSource(this)" class="btn btn-danger btn-sm" style="width:20%">\
+          <form >\
+            <div class="form-outline mb-4 text-center">\
+              <label class="form-label text-center" for="form6Example3">Source</label>\
+              <select name="place" style="margin: auto;width: 100%" id="form6Example3" class="form-control text-center">\
+                <option value="volvo">Salary</option>\
+                <option value="saab">Student Meals &amp; Accomodation</option>\
+                <option value="opel">Other</option>\
+              </select>\
+            </div>\
+            <div class="form-outline mb-4 text-center">\
+              <label class="form-label" for="form6Example4">Source Account</label>\
+              <input type="text" class="form-control" />\
+            </div>\
+            <div class="form-outline mb-4 text-center">\
+              <label class="form-label" for="form6Example5">Deduction Plan</label>\
+              <select style="margin: auto;width: 100%" id="amountType" class="form-control text-center" onclick="toggleDeductionPlan(this)">\
+                <option value="opt1" >Same Amount Each time</option>\
+                <option value="opt2">Different Amount Each time</option>\
+              </select>\
+            </div>\
+          <div class="form-outline mb-4 text-center" id="amount1">\
+            <div class="col"><label class="form-label" for="form6Example6">Amount</label></div>\
+            <input type="number" class="form-control" />\
+          </div>\
+           <div class="form-outline mb-4" id="amount2" style="display:none">\
+            <div class="row mb-4" style="margin-left: 95px">\
+              <button type="button" class="btn btn-primary btn-sm" onclick="addAmount(this)" style="width:25%">Add</button>\
+            </div>\
+            <input type="number" class="form-control text-center" placeholder="Amount" style="width:75%;margin-left: 9px">\
+          </div>\
+            <div class="row mb-4">\
+              <div class="col">\
+                <div class="form-outline text-center">\
+                  <label class="form-label" for="form6Example1">From</label>\
+                  <input type="date" id="form6Example1" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">\
+                </div>\
+              </div>\
+              <div class="col">\
+                <div class="form-outline text-center">\
+                  <label class="form-label" for="form6Example2">To</label>\
+                  <input type="date" id="form6Example1" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">\
+                </div>\
+              </div>\
+            </div>'
+            )
+          }
+  </script>
+
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
