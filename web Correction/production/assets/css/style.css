@@ -38,6 +38,18 @@ h6 {
 .color_accent{
   color: rgb(80, 182, 72);
 }
+.bg_accent{
+  background-color: rgb(80, 182, 72);
+}
+.border_accent{
+  border-color: rgba(33, 87, 50, 0.338)
+}
+.text-bold{
+  font-weight: bold;
+}
+.text-sm{
+  font-size: 12px;
+}
 .back-to-top {
   position: fixed;
   visibility: hidden;
