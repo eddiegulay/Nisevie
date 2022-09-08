@@ -2,3 +2,5 @@ nisevie/.env
 migrations/
 tests/
 bash.bat
+__pycache__/
+db.sqlite3
