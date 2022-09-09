@@ -39,78 +39,94 @@
 
   </header>
   <main id="main">
-    <section id="body_manual" class="d-flex flex-column justify-content-center">
-      <div class="container">
+
+    <section id="body_intro" class="d-flex flex-column justify-content-center">
+      <div class="container" id="advisor_income_register">
         <div class="row">
-          <div class="col-12">
-            <h3 class="h4 section-title">State saving plan on your own terms</h3>
-            <p class="text-center no_income_stream">
-              <span class="text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni eligendi nemo facere delectus eos
-                commodi.
-              </span>
-            </p>
+          <h3 class="section-title"></h3>
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="col-12">
+              <h3 class="h4 section-title">Lets start by adding your Income streams</h3>
+              <p class="text-center no_income_stream">
+                <span class="text-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni eligendi nemo facere delectus eos
+                  commodi.
+                </span>
+              </p>
+            </div>
+            <div class="col m-1 rounded">
+              <div class="income_stream">
+                <ul>
+                  <li>
+                    <div class="stream-item">
+                      <span class="color_accent">Income Name</span>
+                      <p class="text-sm">Next action in: 2022 September 12</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="stream-item">
+                      <span class="text-muted">Income Name</span>
+                      <p class="text-sm">Next action in: 2022 September 12</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="stream-item">
+                      <span class="text-muted">Income Name</span>
+                      <p class="text-sm">Next action in: 2022 September 12</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="stream-item">
+                      <span class="text-muted">Income Name</span>
+                      <p class="text-sm">Next action in: 2022 September 12</p>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+
+            </div>
+
           </div>
 
           <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <form action="" method="post" role="form" class="">
               <div class="row">
-                <div class="col-md-12 form-group mb-3">
-                  <label for="Stream Name" class="mb-2">Source </label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="e.g Salary, Loan boom"
-                    required>
+                <div class="col-md-12 form-group mb-3 autocomplete">
+                  <label for="Stream Name" class="mb-2">Income Name <i class="bx bxs-rename color_accent"></i></label>
+                  <input type="text" name="name" class="form-control" id="income_name" placeholder="e.g Salary" required>
                 </div>
 
                 <div class="col-md-12 form-group mb-3">
-                  <label for="Stream Name" class="mb-2">Deduction amount</label>
+                  <label for="Stream Name" class="mb-2">Amount <i class="bx bx-money color_accent"></i></label>
                   <input type="text" name="name" class="form-control" id="name" placeholder="500, 0000" required>
                 </div>
-                <div class="col-12 text-center">
-                  <p>
-                    Time Interval
-                  </p>
-                </div>
+
                 <div class="col-md-6 form-group mb-3">
-                  <label for="Stream Name" class="mb-2">From <i class="bx bxs-watch color_accent"></i></label>
-                  <input type="date" name="name" class="form-control" id="name" placeholder="each month" required>
+                  <label for="Stream Name" class="mb-2">Time Interval <i class="bx bxs-watch color_accent"></i></label>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="each month" required>
                 </div>
 
                 <div class="col-md-6 form-group mb-3">
-                  <label for="Stream Name" class="mb-2">To <i class="bx bxs-watch color_accent"></i></label>
-                  <input type="date" name="name" class="form-control" id="name" placeholder="" required>
+                  <label for="Stream Name" class="mb-2"> How Often <i class="bx bx-repeat color_accent"></i></label>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Once every month" required>
                 </div>
 
-                <div class="col-6">
-                  <a href="advisor_record_incomes.html">Prepare budget first</a>
-                </div>
-                <div class="col-6">
-                  <button class="btn btn-md rounded bg_accent text-white float-right">Calculate</button>
-                </div>
-              </div>
-
-          </div>
-
-          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-
-            <div class="p-3 bg-light col-12 rounded my-3">
-              <div class="col-12">
-                <label class="saving-gauge col-12">Amount Remaining <i class="val px-5">100%</i></label>
-                <input type="range" name="" id="remaining" class="range-control">
-              </div>
-            </div>
-
-            <div class="p-3 bg-light col-12 rounded my-3">
-              <div class="col-12">
-                <label class="saving-gauge col-12">Saving <i class="val px-5">100%</i></label>
-                <input type="range" name="" id="remaining" class="range-control">
-              </div>
-            </div>
-
+                <div class="text-left"><button type="submit"
+                    class="btn btn-md rounded bg_accent text-white">Add</button></div>
+            </form>
 
           </div>
 
         </div>
+        <div class="row">
+            <div class="col-4 mt-5">
+                <a href="advisor_record_expenses.html" class="text-white btn btn-sm bg_accent"><i class="bx bx-right-arrow-alt mx-2"></i>Proceed</a>
+            </div>
+        </div>
       </div>
     </section>
+    
   </main>
 
 
@@ -133,6 +149,9 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/atuocomplete.js"></script>
 
+  <script>
+    autocomplete(document.getElementById("income_name"), incomes_streams);
+  </script>
   <!-- body movement -->
   <script>
 

@@ -1150,7 +1150,7 @@ section {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
+.btn, button, button[type=submit] {
   background: rgb(80, 182, 72);
   border: 0;
   padding: 10px 35px;
@@ -1159,6 +1159,9 @@ section {
   border-radius: 50px;
 }
 
+button:hover {
+  background: #095c30;
+}
 button[type=submit]:hover {
   background: #095c30;
 }
