@@ -16,3 +16,5 @@ def add_stream(is_expense:bool, _name: str, _amount: float, _freq: int, _interva
 
     new_stream = Stream(name=_name, category=stream_category, amount=_amount, frequency = _freq, time_interval=_interval, can_save_amount=_can_save, least_expenditure=_least_expenditure, time_delay=_time_delay)
     new_stream.save()
+
+
