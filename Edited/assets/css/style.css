@@ -1228,13 +1228,85 @@ section {
   font-size: 13px;
 }
 
-#crdb-logo {
-  float: left;
-  width: 250px;
-  height: 130px;
+.text-btn1 {
+  border: none;
+  background-color: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-block;
 }
 
-#crd {
-  width: 200px;
-  margin: auto;
+.text-btn2 {
+  border: none;
+  background-color: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* On mouse-over */
+.text-btn1:hover {
+  color: #eee;
+  background: #3AAF4A;
+  border: 1px;
+  border-radius: 5px;
+}
+
+.text-btn2:hover {
+  color: #eee;
+  background: red;
+  border: 1px;
+  border-radius: 5px;
+}
+
+.success {color: green;}
+.info {color: dodgerblue;}
+.warning {color: orange;}
+.danger {color: red;}
+.default {color: black;}
+.crdb-color1{background-color: #215732}
+.crdb-color2{background-color: #3AAF4A}
+.crdb-color3{background-color: #D9EFD4}
+
+.crdb-btn1{
+  border: 1px;
+  border-radius: 5px;
+  background-color:#3AAF4A;
+  color: white;
+  font-family: "Open Sans",sans-serif;
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+.crdb-btn{
+  border: 1px;
+  border-radius: 5px;
+  background-color:#3AAF4A;
+  color: white;
+  font-family: "Open Sans",sans-serif;
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+.crdb-btn:hover{
+  background-color:#215732;
+  color: white;
+}
+
+
+.form-control:focus{
+  border-color:#215732;
+  box-shadow: 0 0 0 0.2rem #3AAF4A;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#main {
+  visibility:hidden;
+  opacity:0;
+  transition: visibility 0s, opacity 1.5s linear;
 }

@@ -9,7 +9,6 @@
   <meta content="" name="keywords">
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -19,92 +18,107 @@
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body id="hero" class="d-flex flex-column justify-content-center">
+<body>
 
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
   <header id="header" class="d-flex flex-column justify-content-center">
-
     <nav id="navbar" class="navbar nav-menu">
       <ul>
-        <li><a href="#" class="nav-link scrollto"><img src="assets/img/crdb-logo.png"><span>CRDB Main Page</span></a></li>
         <li><a href="home.html" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
         <li><a href="planadvisor.html" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Advisor</span></a></li>
-        <li><a href="newplan.html" class="nav-link scrollto active"><i class="bx bx-book-content"></i> <span>Create/Modify</span></a></li>
-        <li><a href="#" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Terminate</span></a></li>
-        <li><a href="termsandconditions.html" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Agreement</span></a></li>
+        <li><a href="newplan.html" class="nav-link scrollto active"><i class="bx bx-book-content"></i> <span>Plans</span></a></li>
+        <li><a href="#" class="nav-link scrollto"><i class="bi bi-x-circle"></i> <span>Terminate</span></a></li>
+        <li><a href="sender.html" class="nav-link scrollto"><i class="bi bi-send"></i> <span>Sender</span></a></li>
         <li><a href="login.html" class="nav-link scrollto"><i class="bx bx-exit"></i> <span>Logout</span></a></li>
       </ul>
     </nav>
   </header>
-
-  <section >
-    <div class="row mb-4" style="margin-left: 95px;">
-    <button type="button" class="btn btn-primary btn-sm" onclick="addSource()" style="margin-left:0;width: 10%;min-width: 61.20px" data-aos="zoom-in" data-aos-delay="100">Add Source</button>
-    <button type="button" class="btn btn-primary btn-sm" style="margin-left:20px;width: 10%;min-width:81px;min-height:32px" data-aos="zoom-in" data-aos-delay="100">Submit</button>
+  <div id="newplan" data-aos="zoom-in" data-aos-delay="5" >
+    <section class="d-flex flex-column text-center">
+      <h1>You don't have any plan yet</h1>
+      <button type="button" class="crdb-btn crdb-color1" onclick="createPlan()" style="margin:auto;width: 10%;min-width: 80px;max-height:35px">Create Plans</button>
+    </section>
   </div>
-    <div class="row mb-4" id="addsource" style="overflow-y:auto;margin:auto;height:500px" data-aos="zoom-in" data-aos-delay="100">
-      <div style="width:350px;margin:30px auto auto auto" >
-        <form>
-          <!-- Text input -->
-          <div class="form-outline mb-4 text-center">
-            <label class="form-label text-center" for="form6Example3">Source</label>
-            <select name="place" style="margin: auto;width: 100%" id="form6Example3" class="form-control text-center">
-              <option value="volvo">Salary</option>
-              <option value="saab">Student Meals &amp; Accomodation</option>
-              <option value="opel">Other</option>
-            </select>
+  <main id="main">
+    <section class="d-flex flex-column" >
+      <div class="mb-4 text-center" data-aos="zoom-in" data-aos-delay="5"> 
+        <h3 class="h4 section-title" style="width:350px;margin:auto">Fill out your Income streams and Submit Plans</h3>
+        <h6 class="danger"><i class="bi bi-exclamation-triangle"></i> Once submitted,there is 1 week window to reduce deduction amount or remove a plan</h6>
+          <div class="text-center">
+            <button type="button" class="crdb-btn crdb-color1" onclick="addSource()" style="margin-left:0;width: 10%;min-width: 61.20px;max-height:32px" data-aos="zoom-in" data-aos-delay="5">Add Form</button>
+            <button type="button" class="crdb-btn crdb-color1" onclick="submitPlans()" style="margin-left:20px;width: 10%;min-width:81px;max-height:32px" data-aos="zoom-in" data-aos-delay="5">Submit</button>  
           </div>
-        
-          <!-- Text input -->
-          <div class="form-outline mb-4 text-center">
-            <label class="form-label" for="form6Example4">Source Account</label>
-            <input type="text" class="form-control" />
-          </div>
-
-          <!-- Email input -->
-          <div class="form-outline mb-4 text-center">
-            <label class="form-label" for="form6Example5">Deduction Plan</label>
-            <select style="margin: auto;width: 100%" id="amountType" class="form-control text-center" onclick="toggleDeductionPlan(this)">
-              <option value="opt1" >Same Amount Each time</option>
-              <option value="opt2">Different Amount Each time</option>
-            </select>
-          </div>
-        
-          <!-- Number input -->
-          <div class="form-outline mb-4 text-center" id="amount1">
-            <div class="col"><label class="form-label" for="form6Example6">Amount</label></div>
-            <input type="number" class="form-control" />
-          </div>
-
-          <!-- Number input -->
-          <div class="form-outline mb-4" id="amount2" style="display:none" >
-            <div class="row mb-4" style="margin-left: 95px">
-              <button type="button" class="btn btn-primary btn-sm" onclick="addAmount(this)" style="width:25%">Add</button>
+        </div>
+      <div class="row mb-4" id="addsource" data-aos="zoom-in" data-aos-delay="5">
+        <div style="width:350px;margin:0 auto auto auto" >
+          <button id="edit" class="text-btn1 success" style="width:80px"><i class="bx bxs-edit-alt"></i>Edit</button>
+          <form>
+            <!-- Text input -->
+            <div class="mb-4 text-center">
+              <label class="form-label text-center" >Income Source</label>
+              <select style="margin: auto;width: 100%" class="form-control text-center">
+                <option value="volvo">Salary</option>
+                <option value="saab">Student Meals &amp; Accomodation</option>
+                <option value="opel">Other</option>
+              </select>
             </div>
-            <input type="number" class="form-control text-center" placeholder="Amount" style="width:75%;margin-left: 9px">
-          </div>
-
-          <!-- 2 column grid layout with text inputs for the first and last names -->
-          <div class="row mb-4">
-            <div class="col">
-              <div class="form-outline text-center">
-                <label class="form-label" for="form6Example1">From</label>
-                <input type="date" id="form6Example1" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+          
+            <!-- Text input -->
+            <div class="mb-4 text-center">
+              <label class="form-label">Income Source Account</label>
+              <input type="text" class="form-control" />
+            </div>
+  
+            <!-- Email input -->
+            <div class="mb-4 text-center">
+              <label class="form-label">Deduction Plan</label>
+              <select style="margin: auto;width: 100%" id="amountType" class="form-control text-center" onclick="toggleDeductionPlan(this)">
+                <option value="opt1" >Same Amount Each time</option>
+                <option value="opt2">Different Amount Each time</option>
+              </select>
+            </div>
+          
+            <!-- Number input -->
+            <div class="mb-4 text-center" id="amount1">
+              <div class="col"><label class="form-label">Amount</label></div>
+              <input type="number" class="form-control" />
+            </div>
+  
+            <!-- Number input -->
+            <div class="mb-4" id="amount2" style="display:none" >
+              <div class="row mb-4" style="margin-left: 95px">
+                <button type="button" class="crdb-btn crdb-color1" onclick="addAmount(this)" style="width:25%">Add</button>
+              </div>
+              <input type="number" class="form-control text-center" placeholder="Amount" style="width:75%;margin-left: 9px">
+            </div>
+  
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+              <div class="col">
+                <div class="text-center">
+                  <label class="form-label" for="form6Example1">From</label>
+                  <input type="date" id="form6Example1" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+                </div>
+              </div>
+              <div class="col">
+                <div class="text-center">
+                  <label class="form-label" for="form6Example2">To</label>
+                  <input type="date" id="form6Example1" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+                </div>
               </div>
             </div>
-            <div class="col">
-              <div class="form-outline text-center">
-                <label class="form-label" for="form6Example2">To</label>
-                <input type="date" id="form6Example1" class="form-control" value="2018-07-22" min="2018-01-01" max="2018-12-31">
-              </div>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
+        </div>
       </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
   <script>
+    function createPlan(){
+      document.getElementById("main").style.visibility = "visible";
+      document.getElementById("main").style.opacity = "1";
+      document.getElementById("newplan").style.display = "none";
+    }
     function toggleDeductionPlan(input) {
       var y = input.parentNode.nextElementSibling;
       var z = input.parentNode.nextElementSibling.nextElementSibling;
@@ -124,7 +138,7 @@
       'beforeend',
       '<div class="row" style="margin-top:5px">\
       <input type="number" class="form-control text-center" placeholder="Amount" style="width:70%;margin-left: 20px">\
-      <input type="button" value="Remove" onclick="removeRow(this)" class="btn btn-danger btn-sm" style="width:20%;margin-left: 10px">\
+      <button  onclick="removeRow(this)" class="text-btn danger" style="width:80px;font-size:12px"><i class="bx bxs-trash"></i>Remove</button>\
       </div>'
     )
   }
@@ -134,17 +148,20 @@
       }
 
       function removeSource (input) {
-        input.parentNode.remove()
+        input.parentNode.parentNode.remove()
       }
 
       function addSource(input){
       document.querySelector('#addsource').insertAdjacentHTML(
         'afterbegin',
-        '<div style="width:350px;margin:0 auto 20px auto" data-aos="zoom-in" data-aos-delay="100">\
-          <input type="button" value="Remove" onclick="removeSource(this)" class="btn btn-danger btn-sm" style="width:20%">\
+        '<div style="width:350px;margin:0 auto 20px auto" data-aos="zoom-in" data-aos-delay="5">\
+            <div class="row">\
+            <button id="edit" class="text-btn1 success" style="width:80px"><i class="bx bxs-edit-alt"></i>Edit</button>\
+            <button onclick="removeSource(this)" class="text-btn2 danger" style="width:100px;margin: 0 0 0 auto"><i class="bx bxs-trash"></i>Remove</button>\
+            </div>\
           <form >\
             <div class="form-outline mb-4 text-center">\
-              <label class="form-label text-center" for="form6Example3">Source</label>\
+              <label class="form-label text-center" for="form6Example3">Income Source</label>\
               <select name="place" style="margin: auto;width: 100%" id="form6Example3" class="form-control text-center">\
                 <option value="volvo">Salary</option>\
                 <option value="saab">Student Meals &amp; Accomodation</option>\
@@ -152,7 +169,7 @@
               </select>\
             </div>\
             <div class="form-outline mb-4 text-center">\
-              <label class="form-label" for="form6Example4">Source Account</label>\
+              <label class="form-label" for="form6Example4">Income Source Account</label>\
               <input type="text" class="form-control" />\
             </div>\
             <div class="form-outline mb-4 text-center">\
@@ -187,6 +204,9 @@
               </div>\
             </div>'
             )
+          }
+          function submitPlans(){
+            document.querySelector("*#edit").style.display = "block";
           }
   </script>
 

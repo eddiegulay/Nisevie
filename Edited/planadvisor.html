@@ -23,15 +23,13 @@
 
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
   <header id="header" class="d-flex flex-column justify-content-center">
-
     <nav id="navbar" class="navbar nav-menu">
       <ul>
-        <li><a href="#" class="nav-link scrollto"><img src="assets/img/crdb-logo.png"><span>CRDB Main Page</span></a></li>
         <li><a href="home.html" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="planadvisor.html" class="nav-link scrollto  active"><i class="bx bx-user"></i> <span>Advisor</span></a></li>
-        <li><a href="newplan.html" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Create/Modify</span></a></li>
-        <li><a href="#" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Terminate</span></a></li>
-        <li><a href="termsandconditions.html" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Agreement</span></a></li>
+        <li><a href="planadvisor.html" class="nav-link scrollto active"><i class="bx bx-user"></i> <span>Advisor</span></a></li>
+        <li><a href="newplan.html" class="nav-link scrollto "><i class="bx bx-book-content"></i> <span>Plans</span></a></li>
+        <li><a href="#" class="nav-link scrollto"><i class="bi bi-x-circle"></i> <span>Terminate</span></a></li>
+        <li><a href="sender.html" class="nav-link scrollto"><i class="bi bi-send"></i> <span>Sender</span></a></li>
         <li><a href="login.html" class="nav-link scrollto"><i class="bx bx-exit"></i> <span>Logout</span></a></li>
       </ul>
     </nav>
@@ -39,11 +37,11 @@
 
   <section >
     <div class="row mb-4" style="margin-left: 95px;">
-    <button type="button" class="btn btn-primary btn-sm" onclick="addSource()" style="margin-left:0;width: 10%;min-width: 61.20px" data-aos="zoom-in" data-aos-delay="100">Add Source</button>
-    <button type="button" class="btn btn-primary btn-sm" style="margin-left:20px;width: 10%;min-width:81px;min-height:32px" data-aos="zoom-in" data-aos-delay="100">Calculate</button>
-    <input class="form-control text-center" placeholder="Amount" style="margin-left:20px;width: 20%;min-width: 20%;" data-aos="zoom-in" data-aos-delay="100"/>  
+    <button type="button" class="btn btn-primary btn-sm" onclick="addSource()" style="margin-left:0;width: 10%;min-width: 61.20px" data-aos="zoom-in" data-aos-delay="5">Add Source</button>
+    <button type="button" class="btn btn-primary btn-sm" style="margin-left:20px;width: 10%;min-width:81px;min-height:32px" data-aos="zoom-in" data-aos-delay="5">Calculate</button>
+    <input class="form-control text-center" placeholder="Amount" style="margin-left:20px;width: 20%;min-width: 20%;" data-aos="zoom-in" data-aos-delay="5"/>  
   </div>
-    <div class="row mb-4" id="addsource" style="overflow-y:auto;margin:auto;height:500px" data-aos="zoom-in" data-aos-delay="100">
+    <div class="row mb-4" id="addsource" style="overflow-y:auto;margin:auto;height:500px" data-aos="zoom-in" data-aos-delay="5">
       <div style="width:350px;margin:30px auto auto auto" >
         <form>
           <!-- Text input -->
@@ -141,7 +139,7 @@
       function addSource(input){
       document.querySelector('#addsource').insertAdjacentHTML(
         'afterbegin',
-        '<div style="width:350px;margin:0 auto 20px auto" data-aos="zoom-in" data-aos-delay="100">\
+        '<div style="width:350px;margin:0 auto 20px auto" data-aos="zoom-in" data-aos-delay="5">\
           <input type="button" value="Remove" onclick="removeSource(this)" class="btn btn-danger btn-sm" style="width:20%">\
           <form >\
             <div class="form-outline mb-4 text-center">\
