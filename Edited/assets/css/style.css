@@ -1254,7 +1254,7 @@ section {
 
 .text-btn2:hover {
   color: #eee;
-  background: red;
+  background: #DC3545;
   border: 1px;
   border-radius: 5px;
 }
@@ -1262,21 +1262,11 @@ section {
 .success {color: green;}
 .info {color: dodgerblue;}
 .warning {color: orange;}
-.danger {color: red;}
+.danger {color: #DC3545;}
 .default {color: black;}
 .crdb-color1{background-color: #215732}
 .crdb-color2{background-color: #3AAF4A}
 .crdb-color3{background-color: #D9EFD4}
-
-.crdb-btn1{
-  border: 1px;
-  border-radius: 5px;
-  background-color:#3AAF4A;
-  color: white;
-  font-family: "Open Sans",sans-serif;
-  font-size: 14px;
-  padding: 4px 8px;
-}
 
 .crdb-btn{
   border: 1px;
