@@ -20,62 +20,48 @@
 
 <body id="hero" class="d-flex flex-column justify-content-center">
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-  <section >
+  <section>
     <div class="container" data-aos="zoom-in" data-aos-delay="5">
-        <div class="row">
-          <div class="col-sm">
-            <p><img src="assets\img\logo.png" alt="crdb-logo" style="width: 150px;height: 80px"></p>
-            <h1>Nisevie</h1>
-            <p><span class="typed" data-typed-items="Reckless spending is invetible, We help you avoid that, Let Your money grow, You're welcome"></span></p>
-          </div>
-          <div class="col-sm">
-            <form style="width: 300px;margin: auto;">
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="form2Example1" class="form-control" />
-                <label class="form-label" for="form2Example1">Email address</label>
-              </div>
-            
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input type="password" id="form2Example2" class="form-control"/>
-                <label class="form-label" for="form2Example2">Password</label>
-              </div>
-            
-              <!-- 2 column grid layout for inline styling -->
-              <div class="row mb-4">
-                <div class="col d-flex justify-content-left">
-                  <!-- Checkbox -->
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                    <label class="form-check-label" for="form2Example31"> Remember me </label>
-                  </div>
-                </div>
-            
-                <div class="col text-left">
-                  <!-- Simple link -->
-                  <a href="#!">Forgot password?</a>
-                </div>
-              </div>
-            
-              <!-- Submit button -->
-              <button type="button" class="crdb-btn crdb-color1"><a href="home.html" style="color:white">Login</a></button>
-            
-              <!-- Register buttons -->
-              <div class="text-left">
-                <p>Not a member? <a href="#!">Register</a></p>
-                </button>
-              </div>
-            </form>
+      <div class="row">
+        <div class="col-sm-12 col-md-5">
+          <p><img src="assets\img\logo.png" alt="crdb-logo" style="width: 150px;height: 80px"></p>
+          <h1>Nisevie</h1>
+          <p><span class="typed"
+              data-typed-items="Reckless spending is invetible, We help you avoid that, Let Your money grow, You're welcome"></span>
+          </p>
         </div>
+
+        <div class="col-sm-12 col-md-6">
+          <div class="container">
+            <div class="card-body">
+              <form action="" method="post">
+                <div class="form-outline mb-4">
+                  <span class="section-title h1">Login</span>
+                </div>
+                <div class="form-outline m-2">
+                  <label class="form-label" for="mobile_number">Registered Phone number</label>
+                  <input type="text" id="mobile_number" class="form-control" />
+                  <button class="btn btn-sm btn-success float-right mt-2">Get OTP</button>
+                </div>
+                <div class="form-outline m-2" style="display: none;">
+                  <label class="form-label" for="OTP">Code recieved</label>
+                  <input type="text" id="otp" class="form-control" />
+                  <button class="btn btn-sm btn-warning float-right mt-2">Send OTP again</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
       </div>
-      
+
     </div>
   </section>
 
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
 
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

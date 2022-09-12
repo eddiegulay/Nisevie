@@ -17,7 +17,7 @@ def generate_otp():
 
 # customer login
 def customer_login(mobile_number):
-    user = acc_holder.objects.get(mobile_number=mobile_number)
+    user = acc_holder.objects.get(mobile_number=mobile_number, pin=_pin)
     if user:
         token = generate_otp()
         print(f"send _OTP_ {token}")

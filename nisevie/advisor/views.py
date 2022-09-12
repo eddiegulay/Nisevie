@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from nisevie.advisor.models import SavingPlan
+from advisor.models import SavingPlan
 
 
 # Create your views here.
@@ -17,3 +17,4 @@ def PlanCreatorPage(request):
         new_plan.save()
 
     return render(request, )
+
