@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bankCredentials.apps.BankcredentialsConfig',
-    'advisor.apps.AdvisorConfig'
+    'advisor.apps.AdvisorConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

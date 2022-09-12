@@ -7,7 +7,7 @@ class SavingPlanAdmin(admin.ModelAdmin):
     list_display = ("target_account", "create_time", "initial_amount","current_amount", "allowed_withdraw_date")
 
 class StreamCategoryAdmin(admin.ModelAdmin):
-    list_display = ("category_name", "create_date")
+    list_display = ("id", "category_name", "create_date")
 
 class StreamAdmin(admin.ModelAdmin):
     list_display = ("name", "amount")
