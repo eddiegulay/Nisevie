@@ -1,53 +1,102 @@
-{% extends 'base.html' %}
-{%load static%}
+{% extends 'base.html' %} {%load static%}
 <!-- document title-->
-{% block title %}
-    Login
-{% endblock title %}
+{% block title %} Login {% endblock title %}
 
 <!-- document body -->
 {% block body %}
 
 <body id="hero" class="d-flex flex-column justify-content-center">
-    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-    <section>
-      <div class="container" data-aos="zoom-in" data-aos-delay="5">
-        <div class="row">
-          <div class="col-sm-12 col-md-5">
-            <h1>Nisevie</h1>
-            <p><span class="typed"
-                data-typed-items="Reckless spending is invetible, We help you avoid that, Let Your money grow, You're welcome"></span>
-            </p>
-          </div>
-  
-          <div class="col-sm-12 col-md-6">
-            <div class="container">
-              <div class="card-body">
-                <form action="" method="post">
-                  <div class="form-outline mb-4">
-                    <span class="section-title h1">Login</span>
-                  </div>
-                  <div class="form-outline m-2">
-                    <label class="form-label" for="mobile_number">Registered Phone number</label>
-                    <input type="text" id="mobile_number" class="form-control" />
-                    <button class="btn btn-sm btn-success float-right mt-2">Get OTP</button>
-                  </div>
-                  <div class="form-outline m-2" style="display: none;">
-                    <label class="form-label" for="OTP">Code recieved</label>
-                    <input type="text" id="otp" class="form-control" />
-                    <button class="btn btn-sm btn-warning float-right mt-2">Send OTP again</button>
-                  </div>
-                </form>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <section>
+    <div class="container" data-aos="zoom-in" data-aos-delay="5">
+      <div class="row">
+        <div class="col-sm-12 col-md-5">
+          <h1>Nisevie</h1>
+          <p>
+            <span
+              class="typed"
+              data-typed-items="Reckless spending is invetible, We help you avoid that, Let Your money grow, You're welcome"
+            ></span>
+          </p>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          <div class="container">
+            <div class="card-body">
+              <form method="post">
+                {% csrf_token %}
+              <div class="form-outline mb-4">
+                <span class="section-title h1">Login</span>
               </div>
+              <div class="form-outline m-2" id="mobile_input">
+                <label class="form-label" for="mobile_number">Registered Phone number</label>
+                <input type="text" name="phoner_number" id="mobile_number" class="form-control" />
+                <span
+                  class="btn btn-sm btn-success float-right mt-2"
+                  id="get_otp"
+                >
+                  Get OTP
+              </span>
+              </div>
+              <div class="form-outline m-2" style="display: none" id="fill_otp">
+                <label class="form-label" for="OTP">Code recieved</label>
+                <input type="text" id="otp" class="form-control" />
+
+                <input type='submit'
+                  class="btn btn-sm btn-success float-right mt-2"
+                  id="btn_login"
+                  value="Login"
+                >
+                <button class="btn btn-sm btn-warning float-right mt-2" id="resend_otp">
+                  Send OTP again
+                </button>
+              </div>
+            </form>
             </div>
           </div>
-  
         </div>
-  
       </div>
-    </section>
-  
-{% endblock body %}
+    </div>
+  </section>
+  <script>
+    var n_pass = 0;
+    $("#get_otp").on("click", function () {
+      var number = $("#mobile_number").val();
+      if (number.length < 10) {
+        alert("please provide a correct number format");
+      } else {
+        $.get("/otp/" + number, (data, status) => {
+          if (data["status"] == 200) {
+            n_pass = data["otp"];
+            $("#fill_otp").fadeToggle();
+            $("#mobile_input").fadeToggle();
+            localStorage.setItem('customer', data['customer'])
+          }
+        });
+      }
+    });
 
-<!-- page preloader -->
-{% include 'pre_loader.html' %}
+    $("#btn_login").on("click", function () {
+      var pass = $("#otp").val();
+      if (n_pass == 0) {
+        alert("please wait for OTP to arrive");
+      } else {
+        if (n_pass == pass) {
+          var holder = localStorage.getItem('customer')
+          window.location.href = "/"+holder+"/"
+        } else {
+          alert("incorrect code number");
+        }
+      }
+    });
+    $("#resend_otp").on("click", function () {
+      $("#fill_otp").fadeToggle();
+      $("#mobile_input").fadeToggle();
+    });
+  </script>
+
+  {% endblock body %}
+
+  <!-- page preloader -->
+  {% include 'pre_loader.html' %}
+</body>

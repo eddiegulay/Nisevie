@@ -1,11 +1,12 @@
 # bank credentials controls
 from random import randint as rand
 
-from .models import AccountHolder as acc_holder
+from .models import BankAuth as acc_holder
 from .models import SavingsDetail as sd
 from .models import FixedDepositDetail as fxd
 from .models import BankAccount as bank_acc
 
+from .sms_push_otp import send_sms
 
 # generate otp
 def generate_otp():
@@ -16,13 +17,16 @@ def generate_otp():
 
 
 # customer login
-def customer_login(mobile_number):
-    user = acc_holder.objects.get(mobile_number=mobile_number, pin=_pin)
+def send_otp(mobile_number):
+    user = acc_holder.objects.get(mobile_number=mobile_number)
     if user:
         token = generate_otp()
-        print(f"send _OTP_ {token}")
+        resp = send_sms(token, mobile_number)
+        return resp
     else:
-        print("Failed to process request")
+        resp = {'status': 404, 'details': 'Customer Not found'}
+        print(resp)
+        return resp
 
 
 # create new customer saving details

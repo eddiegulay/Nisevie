@@ -1,15 +1,10 @@
 from django.db import models
-
+from django.contrib.auth.models import User as AccountHolder
 
 # Create your models here.
-class AccountHolder(models.Model):
-    user_first_name = models.CharField(max_length=45)
-    user_last_name = models.CharField(max_length=45)
-    mobile_number = models.CharField(max_length=14, verbose_name="Phone number")
-
-    def __str__(self) -> str:
-        return f"{self.user_first_name} {self.user_last_name}"
-
+class BankAuth(models.Model):
+    mobile_number = models.CharField(max_length=20, unique=True, null=True)
+    holder = models.ForeignKey(AccountHolder, on_delete=models.CASCADE)
 
 class BankAccount(models.Model):
     account_holder = models.ForeignKey(to=AccountHolder, on_delete=models.CASCADE)
@@ -18,7 +13,7 @@ class BankAccount(models.Model):
     current_balance = models.FloatField(default=0)
 
     def __str__(self) -> str:
-        return f"{self.account_number}@{self.account_holder.mobile_number}"
+        return f"{self.account_holder.first_name} {self.account_holder.last_name} ({self.account_number})"
 
 
 class SavingAccount(models.Model):

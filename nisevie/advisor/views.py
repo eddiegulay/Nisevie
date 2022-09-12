@@ -1,9 +1,25 @@
 from django.shortcuts import render
 
+from django.contrib.auth.models import User as AccountHolder
 from advisor.models import SavingPlan
+from bankCredentials.models import BankAccount
 
 
-# Create your views here.
+def home_view(request):
+    holder_id = request.user.id
+    customer = AccountHolder.objects.get(id=holder_id)
+    bank_account = BankAccount.objects.get(account_holder = customer)
+
+    # saving plans 
+    saving_plans = SavingPlan.objects.get(target_account = bank_account)
+    context = {
+        'plans': saving_plans
+    }
+    return render(request, 'home.html', context)
+
+
+
+# 🐛
 def PlanCreatorPage(request):
     if request.method == 'POST':
         time_interval = request.POST['interval']
