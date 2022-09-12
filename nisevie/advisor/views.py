@@ -45,7 +45,29 @@ def advisor_record_incomes(request):
     return render(request, 'advisor/income_streams.html', context)
 
 def advisor_record_expenses(request):
-    pass
+    if request.POST:
+        stream_name = request.POST['stream_name']
+        stream_amount = request.POST['stream_amount']
+        time_interval = request.POST['time_interval']
+        stream_frequency = request.POST['stream_frequency']
+        can_save_amount = request.POST['can_save_amount']
+        least_expenditure = request.POST['least_expenditure']
+
+        add_stream(request.user.id, True, stream_name, stream_amount, stream_frequency, time_interval, can_save_amount, least_expenditure, 0)
+        return redirect('/home/expenses/')
+    
+    # active income streams
+    holder = AccountHolder.objects.get(id=request.user.id) # account holder
+    account = BankAccount.objects.get(account_holder = holder) #account linked to income stream
+    stream_category = StreamCategory.objects.get(category_name = "Expense")# category classification separating Expenses from Incomes
+
+    expenses = Stream.objects.filter(category= stream_category, linked_account=account)
+
+    context = {
+        'expenses': expenses
+    }
+    return render(request, 'advisor/expense_streams.html', context)
+
 
 # 🐛
 def PlanCreatorPage(request):

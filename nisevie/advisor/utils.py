@@ -21,4 +21,8 @@ def add_stream(_linked_account:int, is_expense:bool, _name: str, _amount: float,
     new_stream = Stream(linked_account = account, name=_name, category=stream_category, amount=_amount, frequency = _freq, time_interval=_interval, can_save_amount=_can_save, least_expenditure=_least_expenditure, time_delay=_time_delay)
     new_stream.save()
 
-
+def calculate_stream_total(query_set):
+    total = 0
+    for item in query_set:
+        total += float(item['amount'])
+    return total
