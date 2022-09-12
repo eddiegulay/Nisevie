@@ -4,7 +4,7 @@ from django.contrib.auth.models import User as AccountHolder
 from advisor.models import SavingPlan
 from bankCredentials.models import BankAccount
 
-
+#🌟
 def home_view(request):
     holder_id = request.user.id
     customer = AccountHolder.objects.get(id=holder_id)
@@ -17,6 +17,9 @@ def home_view(request):
     }
     return render(request, 'home.html', context)
 
+# 🐛
+def advisor_view(request):
+    return render(request, 'advisor.html')
 
 
 # 🐛

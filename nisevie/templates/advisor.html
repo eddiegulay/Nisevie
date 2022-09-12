@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Advisor {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+
+<section id="hero" class="d-flex flex-column justify-content-center">
+    <div class="container" data-aos="zoom">
+      <h1>Nisevie</h1>
+      <p><span>Welcome to plan advisor</span></p>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="body_intro" class="d-flex flex-column justify-content-center">
+      <div class="container">
+        <div class="row">
+            <div class='col-sm-12 col-md-6'>
+                <h2>What is Plan Advisor?</h2>
+                <p><span class="text-muted"></span></p>
+                <p><span>Here, you can identify your regular income and use that information to manage your expenses. <br> From there, we can help you figure out how much you can save.</span></p>
+                <a href="advisor_credential_fetching.html" class="btn btn-sm color_accent border_accent p-2 rounded"><i class="bx bx-run"></i> Start</a>
+                
+            </div>
+            <div class="col-sm-12 col-md-6">
+            </div>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock body%}
