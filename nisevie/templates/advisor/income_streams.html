@@ -1,0 +1,105 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Advisor-incomes {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+
+<main id="main">
+
+    <section id="body_intro" class="d-flex flex-column justify-content-center">
+      <div class="container" id="advisor_income_register">
+        <div class="row">
+          <h3 class="section-title"></h3>
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="col-12">
+              <h3 class="h4 section-title">Lets start by adding your Income credentials.</h3>
+              <p class="text-center no_income_stream">
+                <span class="text-center">
+                  Determine your revenues and add their details.
+                </span>
+              </p>
+            </div>
+            <div class="col m-1 rounded">
+              <div class="income_stream">
+                <ul>
+                    
+                    {% for income in income_streams %}
+                    <li>
+                        <div class="stream-item">
+                            <span class="color_accent">{{income.name}}</span>
+                            <p class="text-sm">
+                                Time Interval {{income.time_interval}} Months <br>
+                                Amount: {{income.amount}} <br>
+                                Expected time delay: {{income.time_delay}} days
+                            </p>
+                        </div>
+                      </li>
+                    {% endfor %}
+                    
+                  
+                </ul>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <form action="" method="post" role="form" class="">
+                {% csrf_token %}
+              <div class="row">
+                <div class="col-md-12 form-group mb-3 autocomplete">
+                  <label for="Stream Name" class="mb-2">Income Name <i class="bx bxs-rename color_accent"></i></label>
+                  <input type="text" name="stream_name" class="form-control" id="income_name" placeholder="e.g Salary" required>
+                </div>
+
+                <div class="col-md-12 form-group mb-3">
+                  <label for="id_stream_amount" class="mb-2">Amount <i class="bx bx-money color_accent"></i></label>
+                  <input type="text" name="stream_amount" class="form-control" id="id_stream_amount" placeholder="500,000" required>
+                </div>
+
+                <div class="col-md-6 form-group mb-3">
+                  <label for="Stream Name" class="mb-2">Time Interval <i class="bx bxs-watch color_accent"></i></label>
+                  <select type="text" name="time_interval" class="form-control" required>
+                    <option value='1'>Each Month</option>
+                    <option value='2'>Every two months</option>
+                    <option value='3'>Every three months</option>
+                    <option value='4'>Every four months</option>
+                    <option value='5'>Every five months</option>
+                    <option value='6'>Every six months</option>
+                    <option value='12'>After One year</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6 form-group mb-3">
+                  <label for="Stream Name" class="mb-2"> How Often <i class="bx bx-repeat color_accent"></i></label>
+                  <input type="text" name="stream_frequency" class="form-control" id="id_stream_frequency" placeholder="1 for Once every month" required>
+                </div>
+
+                <div class="text-left">
+                    <button type="submit"
+                    class="btn btn-md rounded bg_accent text-white">Add</button></div>
+            </form>
+
+          </div>
+
+        </div>
+        <div class="row">
+            <div class="col-4 mt-5">
+                <a href="{% url 'expenses_streams' %}" class="text-white btn btn-sm bg_accent"><i class="bx bx-right-arrow-alt mx-2"></i>Proceed</a>
+            </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  <script src="{% static 'assets/js/atuocomplete.js' %}"></script>
+
+  <script>
+    autocomplete(document.getElementById("income_name"), incomes_streams);
+  </script>
+  <!-- body movement -->
+  
+{% endblock body%}

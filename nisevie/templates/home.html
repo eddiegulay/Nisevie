@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Home {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+
+    
+      <section id="hero" class="d-flex flex-column justify-content-center">
+        <div class="container" data-aos="zoom" data-aos-delay="1">
+        <div class="row">
+          <div class="col">
+            <h1>Nisevie</h1>
+            <p><span class="typed" data-typed-items="Reckless spending is inevitable, We help you avoid that, Let Your money grow, You're welcome"></span></p>
+          </div>
+          <div class="col text-center" data-aos="zoom" data-aos-delay="2">
+            <span class="text-muted" style="font-size: 15px">current plan</span>
+            <h1>{{plans.initial_amount}}</h1>
+            <p>{{plans.allowed_withdraw_date}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+{% endblock body%}
