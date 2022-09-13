@@ -68,6 +68,13 @@ def advisor_record_expenses(request):
     }
     return render(request, 'advisor/expense_streams.html', context)
 
+def delete_stream_expense(request, _id):
+    stream = Stream.objects.get(id=_id)
+    stream.delete()
+    
+    return redirect("/home/expenses/")
+
+
 def advisor_suggestion_view(request):
     holder = AccountHolder.objects.get(id=request.user.id) # account holder
     account = BankAccount.objects.get(account_holder = holder) #account linked to income stream
