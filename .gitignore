@@ -1,5 +1,4 @@
 nisevie/.env
-nisevie/static_files
 migrations/
 tests/
 bash.bat
