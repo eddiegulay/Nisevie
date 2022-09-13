@@ -4,7 +4,7 @@
 
 <!-- document body -->
 {% block body %}
-
+{% include 'navbar.html' %}
 <main id="main">
 
     <section id="body_intro" class="d-flex flex-column justify-content-center">
@@ -94,12 +94,9 @@
       </div>
     </section>
     
-  </main>
-  <script src="{% static 'assets/js/atuocomplete.js' %}"></script>
+</main>
 
-  <script>
-    autocomplete(document.getElementById("income_name"), incomes_streams);
-  </script>
-  <!-- body movement -->
-  
+<script src="{% static 'assets/js/atuocomplete.js' %}"></script>
+<script>autocomplete(document.getElementById("income_name"), incomes_streams);</script>
+
 {% endblock body%}
