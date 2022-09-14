@@ -74,6 +74,24 @@ def delete_stream_expense(request, _id):
     
     return redirect("/home/expenses/")
 
+def edit_stream_expense(request, _id):
+    stream = Stream.objects.get(id=_id)
+    if request.POST:
+        stream.name = request.POST['stream_name']
+        stream.amount = request.POST['stream_amount']
+        stream.time_interval = request.POST['time_interval']
+        stream.frequency = request.POST['stream_frequency']
+        stream.can_save_amount = request.POST['can_save_amount']
+        stream.least_expenditure = request.POST['least_expenditure']
+
+        stream.save()
+        return redirect('/home/expenses/')
+
+    context = {
+        'expense':stream
+    }
+    return render(request, 'advisor/edit_expense.html', context)
+
 
 def advisor_suggestion_view(request):
     holder = AccountHolder.objects.get(id=request.user.id) # account holder
