@@ -4,6 +4,7 @@
 
 <!-- document body -->
 {% block body %}
+{% include 'navbar.html' %}
 <main id="main">
 
     <section id="body_expenses" class="d-flex flex-column justify-content-center">
@@ -26,8 +27,8 @@
                     <div class="stream-item">
                       <span class="color_accent">{{expense.name}}</span>
                       <p class="text-sm">{{expense.amount}} Tzs. <span class="text-muted">after every {{expense.time_interval}} months</span></p>
-                      <p class="text-sm"><a href="#" class="m-1 text_accent"> <i class="bx bxs-edit-alt"></i> edit</a>
-                        <a href="#" class="m-1 text-danger"> <i class="bx bxs-trash"> </i>remove</a></p>
+                      <p class="text-sm"><a href="{% url 'edit_expense_stream' expense.id %}" class="m-1 text_accent"> <i class="bx bxs-edit-alt"></i> edit</a>
+                        <a href="{% url 'delete_expense_stream' expense.id %}" class="m-1 text-danger"> <i class="bx bxs-trash"> </i>remove</a></p>
                       </p>
                     </div>
                   </li>
@@ -92,7 +93,7 @@
         </div>
         <div class="row">
           <div class="col-4 mt-5">
-            <a href="advisor.html" class="text-white btn btn-sm bg_accent"><i
+            <a href="{% url 'suggestions' %}" class="text-white btn btn-sm bg_accent"><i
                 class="bx bx-right-arrow-alt mx-2"></i>Analyze</a>
           </div>
         </div>

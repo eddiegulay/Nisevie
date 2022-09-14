@@ -29,7 +29,7 @@
     <nav id="navbar" class="navbar nav-menu">
       <ul>
         <li><a href="#" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="#" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Advisor</span></a></li>
+        <li><a href="#" class="nav-link scrollto"><i class="bx bx-money"></i> <span>Advisor</span></a></li>
         <li><a href="#" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Agreement</span></a></li>
         <li><a href="#" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>New Plan</span></a></li>
         <li><a href="#" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Current Plan</span></a></li>
@@ -40,16 +40,15 @@
   </header>
   <main id="main">
 
-    <section id="body_intro" class="d-flex flex-column justify-content-center">
-      <div class="container" id="advisor_income_register">
+    <section id="body_expenses" class="d-flex flex-column justify-content-center">
+      <div class="container">
         <div class="row">
-          <h3 class="section-title"></h3>
           <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
             <div class="col-12">
-              <h3 class="h4 section-title">Lets start by adding your Income credentials.</h3>
+              <h3 class="h4 section-title"><em>Add your Expenses</em></h3>
               <p class="text-center no_income_stream">
                 <span class="text-center">
-                  Determine your revenues and add their details.
+                  Identify and associate your expenses with your incomes and know how much you can save without deviating from your regular spending plan.
                 </span>
               </p>
             </div>
@@ -58,26 +57,30 @@
                 <ul>
                   <li>
                     <div class="stream-item">
-                      <span class="color_accent">Income Name</span>
-                      <p class="text-sm">Next action in: 2022 September 12</p>
+                      <span class="color_accent">Expense Name</span>
+                      <p class="text-sm">12,0000 Tzs. <span class="text-muted">each month</span></p>
+                      <p class="text-sm"><a href="#" class="m-1 text_accent"> <i class="bx bxs-edit-alt"></i> edit</a>
+                        <a href="#" class="m-1 text-danger"> <i class="bx bxs-trash"> </i>remove</a></p>
+                      </p>
                     </div>
                   </li>
                   <li>
                     <div class="stream-item">
-                      <span class="text-muted">Income Name</span>
-                      <p class="text-sm">Next action in: 2022 September 12</p>
+                      <span class="color_accent">Expense Name</span>
+                      <p class="text-sm">12,0000 Tzs. <span class="text-muted">each month</span></p>
+                      <p class="text-sm"><a href="#" class="m-1 text_accent"> <i class="bx bxs-edit-alt"></i> edit</a>
+                        <a href="#" class="m-1 text-danger"> <i class="bx bxs-trash"> </i>remove</a>
+                      </p>
+                      </p>
                     </div>
                   </li>
                   <li>
                     <div class="stream-item">
-                      <span class="text-muted">Income Name</span>
-                      <p class="text-sm">Next action in: 2022 September 12</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="stream-item">
-                      <span class="text-muted">Income Name</span>
-                      <p class="text-sm">Next action in: 2022 September 12</p>
+                      <span class="color_accent">Expense Name</span>
+                      <p class="text-sm">12,0000 Tzs. <span class="text-muted">each month</span></p>
+                      <p class="text-sm"><a href="#" class="m-1 text_accent"> <i class="bx bxs-edit-alt"></i> edit</a>
+                        <a href="#" class="m-1 text-danger"> <i class="bx bxs-trash"> </i>remove</a>
+                      </p>
                     </div>
                   </li>
                 </ul>
@@ -85,20 +88,20 @@
               </div>
 
             </div>
-
           </div>
 
           <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
             <form action="" method="post" role="form" class="">
               <div class="row">
                 <div class="col-md-12 form-group mb-3 autocomplete">
-                  <label for="Stream Name" class="mb-2">Income Name <i class="bx bxs-rename color_accent"></i></label>
-                  <input type="text" name="name" class="form-control" id="income_name" placeholder="e.g Salary" required>
+                  <label for="Stream Name" class="mb-2">Expense Name <i class="bx bxs-rename color_accent"></i></label>
+                  <input type="text" name="name" class="form-control" id="expense_name" placeholder="e.g Rent" required>
                 </div>
 
                 <div class="col-md-12 form-group mb-3">
                   <label for="Stream Name" class="mb-2">Amount <i class="bx bx-money color_accent"></i></label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="500,000" required>
+                  <input type="text" name="name" class="form-control" id="expense_value" placeholder="500,000"
+                    required>
                 </div>
 
                 <div class="col-md-6 form-group mb-3">
@@ -111,21 +114,24 @@
                   <input type="text" name="name" class="form-control" id="name" placeholder="Once every month" required>
                 </div>
 
-                <div class="text-left"><button type="submit"
-                    class="btn btn-md rounded bg_accent text-white">Add</button></div>
+                <div class="col-6">
+                  <button type="submit" class="btn btn-md rounded bg_accent text-white">Add expense</button>
+                </div>
+
             </form>
 
           </div>
 
         </div>
         <div class="row">
-            <div class="col-4 mt-5">
-                <a id="proceed" href="advisor_record_expenses.html" class="btn btn-sm"><i class="bx bx-right-arrow-alt mx-2"></i>Proceed</a>
-            </div>
+          <div class="col-4 mt-5">
+            <a href="advisor.html" class="text-white btn btn-sm bg_accent"><i
+                class="bx bx-right-arrow-alt mx-2"></i>Analyze</a>
+          </div>
         </div>
       </div>
     </section>
-    
+
   </main>
 
 
@@ -149,12 +155,9 @@
   <script src="assets/js/atuocomplete.js"></script>
 
   <script>
-    autocomplete(document.getElementById("income_name"), incomes_streams);
+    autocomplete(document.getElementById("expense_name"), expense_list_name, expense_list_values);
   </script>
-  <!-- body movement -->
-  <script>
-
-  </script>
+ 
 </body>
 
 </html>

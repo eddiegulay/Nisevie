@@ -18,11 +18,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: #067ded;
-  text-decoration: none;
-}
-
 h1,
 h2,
 h3,
@@ -1300,3 +1295,4 @@ input::-webkit-inner-spin-button{
   opacity:0;
   transition: visibility 0s, opacity 1.5s linear;
 }
+
