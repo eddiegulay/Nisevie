@@ -19,8 +19,7 @@
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
-
+<body id="hero">
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
   <header id="header" class="d-flex flex-column justify-content-center">
     <nav id="navbar" class="navbar nav-menu">
@@ -33,18 +32,28 @@
       </ul>
     </nav>
   </header>
-    <section id="hero" class="d-flex flex-column justify-content-center">
+    <section class="d-flex flex-column justify-content-center">
       <div class="container" data-aos="zoom-in" data-aos-delay="5">
-      <div class="row">
+        <div class="row" style="margin:auto 0 auto auto;width:fit-content">
+          <div class="col"><div id="balance">
+            <h5>100,000</h5>
+            <h5>22/12/2022</h5></div></div>
+          <div class="col dropdown">
+            <p id="profile">
+              <i class="bx bx-user-circle"></i>
+            </p>
+            <ul class="dropdown-menu">
+              <li><button class="dropdown-item" type="button" style="background-color: rgb(179, 178, 178)">Account: 922993000882</button></li>
+              <li><button class="dropdown-item" type="button">Profile</button></li>
+              <li><button class="dropdown-item" type="button">This is Acting</button></li>
+            </ul>
+          </div>
+        </div>
+      <div style="margin-top: 100px;">
         <div class="col">
-          <h1>Nisevie</h1>
-          <p><span class="typed" data-typed-items="Reckless spending is inevitable, We help you avoid that, Let Your money grow, You're welcome"></span></p>
-        </div>
-        <div class="col text-center" >
-          <h2>Savings</h2>
-          <h1>500,000</h1>
-        <p>Dec 20 2022</p>
-        </div>
+          <h1>CRDB Nisevie Service</h1>
+          <p><span class="typed" data-typed-items="Reckless spending disrupts savings trajectory, We help you avoid that, Let Your money grow, You're welcome"></span></p><br>
+          <p><a href="#" id="learn-more-btn">LEARN MORE</a></p>
       </div>
     </div>
   </section>

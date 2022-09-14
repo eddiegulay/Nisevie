@@ -30,6 +30,21 @@ h6 {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
+.color_accent{
+  color: rgb(80, 182, 72);
+}
+.bg_accent{
+  background-color: rgb(80, 182, 72);
+}
+.border_accent{
+  border-color: rgba(33, 87, 50, 0.338)
+}
+.text-bold{
+  font-weight: bold;
+}
+.text-sm{
+  font-size: 12px;
+}
 .back-to-top {
   position: fixed;
   visibility: hidden;
@@ -1130,7 +1145,7 @@ section {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
+.btn, button, button[type=submit] {
   background: rgb(80, 182, 72);
   border: 0;
   padding: 10px 35px;
@@ -1139,8 +1154,11 @@ section {
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
-  background: #0678e3;
+button:hover {
+  background: #095c30;
+}
+button[type=submit]:hover {
+  background: #095c30;
 }
 
 @-webkit-keyframes animate-loading {
@@ -1223,6 +1241,97 @@ section {
   font-size: 13px;
 }
 
+/* range slider */
+
+.range-control {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 100%; 
+  height: 10px; 
+  background: rgb(207, 238, 205); 
+  outline: none; 
+  opacity: 0.7; 
+  -webkit-transition: .2s; 
+  transition: opacity .2s;
+  border-radius: 20px;
+}
+
+/* Mouse-over effects */
+.range-control:hover {
+  opacity: 1; 
+}
+
+.range-control::-webkit-slider-thumb {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 19px; 
+  height: 19px; 
+  background: rgb(80, 182, 72);
+  cursor: pointer; 
+  border-radius: 100%;
+}
+
+.range-control::-moz-range-thumb {
+  width: 19px; 
+  height: 19px; 
+  background: rgb(80, 182, 72); 
+  cursor: pointer; 
+  border-radius: 100%;
+}
+
+.autocomplete{
+  position: relative;
+  display: inline-block;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+
+
+#add,#proceed,#analyzer {
+  color: white;
+  background: rgb(80, 182, 72);
+}
+
+#add:hover,#proceed:hover,#analyzer:hover {
+  color: white;
+  background: #095c30;
+}
+
+.form-control:focus{
+  border-color:#215732;
+  box-shadow: 0 0 0 0.2rem #3AAF4A;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .text-btn1 {
   border: none;
   background-color: inherit;
@@ -1241,17 +1350,13 @@ section {
 
 /* On mouse-over */
 .text-btn1:hover {
-  color: #eee;
-  background: #3AAF4A;
-  border: 1px;
-  border-radius: 5px;
+  background: white;
+  color: #215732;
 }
 
 .text-btn2:hover {
-  color: #eee;
-  background: #DC3545;
-  border: 1px;
-  border-radius: 5px;
+  background: white;
+  color: #9b0413;
 }
 
 .success {color: green;}
@@ -1288,11 +1393,5 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
   -webkit-appearance: none;
   margin: 0;
-}
-
-#main {
-  visibility:hidden;
-  opacity:0;
-  transition: visibility 0s, opacity 1.5s linear;
 }
 

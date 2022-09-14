@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Advisor</title>
+  <title>Create Plan</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <link href="assets/img/favicon.png" rel="icon">
@@ -46,7 +46,7 @@
           <h3 class="section-title"></h3>
           <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
             <div class="col-12">
-              <h3 class="h4 section-title">Lets start by adding your Income credentials.</h3>
+              <h3 class="h4 section-title">Create Your Plans Here And Submit them</h3>
               <p class="text-center no_income_stream">
                 <span class="text-center">
                   Determine your revenues and add their details.
@@ -73,21 +73,13 @@
                 </div>
 
                 <div class="col-md-12 form-group mb-3">
-                    <label for="Stream Name" class="mb-2">Deduction Plan<i class="bx bx-money color_accent"></i></label>
-                    <select  name="name" class="form-control" id="deduction_plan" required>
-                        <option value="opt1" >Same Amount Each Time</option>
-                        <option value="opt2">Different Amount Each Time</option>
-                      </select>
-                  </div>
-
-                <div class="col-md-12 form-group mb-3">
-                  <label for="Stream Name" class="mb-2">Deduced Amount <i class="bx bx-money color_accent"></i></label>
-                  <input type="number" name="name" class="form-control" id="deduced_amount" placeholder="500,000" >
+                  <label for="Stream Name" class="mb-2" >Deduced Amount<i class="bx bx-money color_accent"></i></label>
+                  <input type="number" name="name" class="form-control" id="deduced_amount" placeholder="500,000" required>
                 </div>
-
+                
                 <div class="col-md-6 form-group mb-3">
                   <label for="Stream Name" class="mb-2">Start Date <i class="bx bxs-calendar color_accent"></i></label>
-                  <input type="date" id="start_date" class="form-control" value="2022-09-13" min="2022-09-13" max="2022-12-31">
+                  <input type="date" id="start_date" class="form-control" value="2022-09-13" min="2022-09-13" max="2022-12-31" required>
                 </div>
 
                 <div class="col-md-6 form-group mb-3">
@@ -97,17 +89,11 @@
 
                 <div class="text-left"><button type="submit"
                   id="add" class="btn btn-md rounded bg_accent text-white" onsubmit="addPlan()">Add</button></div>
+              </div>
             </form>
-
           </div>
 
         </div>
-        <div class="row">
-            <div class="col-4 mt-5">
-                <a id="proceed" href="#" class="btn btn-sm"><i class="bx bx-right-arrow-alt mx-2"></i>Submit</a>
-            </div>
-        </div>
-      </div>
     </section>
     
   </main>
