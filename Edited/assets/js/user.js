@@ -1,5 +1,4 @@
 var form = document.getElementById("planForm");
-
 function addPlan(event) {
     event.preventDefault(); 
     var select = document.getElementById("income_name");
@@ -49,4 +48,23 @@ function editPlan(self){
             }
         }
     }
+
+    function autoFillAccountNo(){
+      var index = document.getElementById("senderaccount");
+      var sender_account = index.selectedIndex;
+      var sender_account_no = document.getElementById("senderaccountno");
+      if (sender_account == "0"){
+        sender_account_no.value = "410773338543";
+      }
+      else if (sender_account == "1"){
+        sender_account_no.value = "110972336249";
+      }
+      
+      else {
+        sender_account_no.value = "";
+      }
+    }
+
+    autoFillAccountNo();
+    
     

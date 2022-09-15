@@ -1395,3 +1395,56 @@ input::-webkit-inner-spin-button{
   margin: 0;
 }
 
+#learn-more-btn {
+  border: 1px solid transparent;
+  border-radius: 28px;
+  background-color:#3AAF4A;
+  color: white;
+  font-size: 14px;
+  margin: 4px;
+  padding: 18px 24px;
+  width: 200px;
+  height: 60px;
+}
+
+#learn-more-btn:hover {
+  border: 1px solid #3AAF4A;
+  background-color:white;
+  color: #3AAF4A;
+}
+
+#profile {
+  background: #f2f3f5;
+  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  padding: 11px 18px;
+}
+
+#balance {
+  background: #f2f3f5;
+  border-radius: 10px;
+  width: 200px;
+  height: 62px;
+  margin-top: 18px;
+}
+
+h5 {
+  width: fit-content;
+  margin: auto;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+  background: #f2f3f5;
+  font-size: 14px;
+}
+
+.dropdown-item:hover{
+  color: #3AAF4A;
+}
+
+.dropdown-item {
+  border-radius: 5px;
+} 
