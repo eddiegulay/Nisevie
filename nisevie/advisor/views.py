@@ -37,7 +37,7 @@ def advisor_record_incomes(request):
         stream_amount = request.POST['stream_amount']
         time_interval = request.POST['time_interval']
         stream_frequency = request.POST['stream_frequency']
-        add_stream(request.user.id, False, stream_name, stream_amount, stream_frequency, time_interval,     )
+        add_stream(request.user.id, False, stream_name, stream_amount, stream_frequency, time_interval,  0,0,0   )
         return redirect('/home/streams/')
     
     # active income streams
@@ -137,3 +137,11 @@ def plan_create_view(request):
     
     return render(request, 'advisor/create_plan.html', {'plans' : saving_plans})
 
+def plans_view(request):
+    holder_id = request.user.id
+    customer = AccountHolder.objects.get(id=holder_id)
+    bank_account = BankAccount.objects.get(account_holder = customer)
+
+    # saving plans 
+    saving_plans = SavingPlan.objects.filter(target_account = bank_account)
+    return render(request, 'advisor/inactive_plan.html')
