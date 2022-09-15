@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bankCredentials.apps.BankcredentialsConfig',
     'advisor.apps.AdvisorConfig',
+    'mathfilters'
 
 ]
 

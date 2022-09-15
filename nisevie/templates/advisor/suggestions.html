@@ -1,0 +1,146 @@
+{% extends 'base.html' %} {%load static%} {% load mathfilters %}
+<!-- document title-->
+{% block title %} Advisor-Suggestions {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+{% include 'navbar.html' %}
+
+<main id="main">
+
+    <section id="body_expenses" class="d-flex flex-column justify-content-center">
+      <div class="container-fluid">
+        <div class="row mb-3">
+          <div class="col-12 my-3">
+            <h2 class="h2 ">Status</h2>
+          </div>
+          <div class="col-sm-6 col-md-4  rounded">
+            <div class="card">
+              <div class="card-body">
+                <span class="h5 m-1">Total Income</span>
+                <span class="m-1 color_accent ">{{total_income}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4  rounded">
+            <div class="card">
+              <div class="card-body">
+                <span class="h5 m-1">Total Expenses</span>
+                <span class="m-1 color_accent">{{total_expense}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4  rounded">
+            <div class="card">
+              <div class="card-body">
+                <span class="h5 m-1"> Status</span>
+                <span class="m-1 color_accent ">
+                    {%if total_income > total_expense%}
+                        In budget
+                    {% else %}
+                    Over budget
+                    {%endif%}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 my-3">
+            <h4 class="h5">Breakdown</h5>
+          </div>
+          
+          {% for stream in income_list %}
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 rounded">
+            <div class="card">
+              <div class="card-body">
+                <span class="color_accent"><b>{{stream.name}}</b></span>
+                <table class="table mt-2">
+                  <tr>
+                    <td>Amount remaining</td>
+                    <td>
+                        {{ stream.amount|sub:total_expense }}
+                    </td>
+                  </tr>
+                  
+                </td>
+                </table>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+            
+          
+        </div>
+        
+        {% if total_income < total_expense %}
+        <div class="row my-3">
+            <div class="col-12 my-3">
+              <h5 class="h5">Your expenses are way too high</h5>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 rounded">
+              <div class="card">
+                <div class="card-body">
+                  <span class="h5 color_accent">Might be happening because</span>
+                  <p class="mt-3">
+  
+                  </p>
+                  </table>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        {% else %}
+        <div class="row my-3">
+            <div class="col-sm-12 col-md-6 col-lg-6 rounded">
+                <div class="card">
+                  <div class='card-body'><h5 class="h5">Plan suggestion</h5></div>
+                  
+                </div>
+    
+              </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 rounded">
+              <div class="card">
+                <div class='card-body'><h5 class="h5">Best practices when saving</h5></div>
+                
+              </div>
+  
+            </div>
+          </div>
+        {% endif %}
+            
+        
+
+        <div class="row"> 
+          <div class="col-12 my-3">
+            <h4 class="h5">You might be interested</h5>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 rounded">
+            <div class="card">
+              <div class="card-body">
+                <span class="color_accent"><b>Stream Name</b></span>
+                <table class="table mt-2">
+                  <tr>
+                    <td>Expense Coverage</td>
+                    <td>90%</td>
+                  </tr>
+                  <tr>
+                    <td>Amount remaining</td>
+                    <td>120,000 Tzs.</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+  </main>
+
+{% endblock%}

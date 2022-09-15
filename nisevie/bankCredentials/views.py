@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 # from .utils import send_otp
 from .models import BankAuth as acc_holder
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 
 
@@ -25,3 +25,8 @@ def login_view(request):
     return render(request, "login.html")
 
 # send_otp(mobile_number=mobile_number) => {'status': 200, 'otp': 2345}
+
+
+def customer_logout(request):
+    logout(request)
+    return redirect("/")

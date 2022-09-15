@@ -5,6 +5,14 @@ from advisor.models import SavingPlan, Stream, StreamCategory
 from bankCredentials.models import BankAccount
 from .utils import add_stream, calculate_stream_total
 
+def login_auth(_id):
+    try:
+        customer = AccountHolder.objects.get(id=_id)
+        return False
+    except:
+        return redirect('/')
+
+
 #🌟
 def home_view(request):
     holder_id = request.user.id
