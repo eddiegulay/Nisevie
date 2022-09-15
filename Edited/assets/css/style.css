@@ -1418,7 +1418,7 @@ input::-webkit-inner-spin-button{
   border-radius: 50px;
   width: 60px;
   height: 60px;
-  padding: 11px 18px;
+  padding: 16px;
 }
 
 #balance {
@@ -1448,3 +1448,13 @@ h5 {
 .dropdown-item {
   border-radius: 5px;
 } 
+
+.user-profile {
+  position: fixed;
+  right: 20px;
+  top: 80px;
+  z-index: 9998;
+  border: 0;
+  transition: all 0.4s;
+  cursor: pointer;
+}
