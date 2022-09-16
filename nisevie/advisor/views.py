@@ -227,3 +227,4 @@ def deactivate_plan(request, plan_id):
     deposit_into_account(bank_account.account_number, plan.current_amount)
 
     return redirect('/home/new_plan/')
+
