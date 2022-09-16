@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home_view,advisor_view,advisor_record_incomes, advisor_record_expenses, advisor_suggestion_view, delete_stream_expense, edit_stream_expense, plan_create_view, plans_view, add_missing_stream
+from .views import home_view,advisor_view,advisor_record_incomes, advisor_record_expenses, advisor_suggestion_view, delete_stream_expense, edit_stream_expense, plan_create_view, plans_view, add_missing_stream, deactivate_plan
 
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('edit_expense/<int:_id>', edit_stream_expense, name='edit_expense_stream'),
     path('new_plan/', plan_create_view, name='new_plan'),
     path('plans/', plans_view, name='plans_list'),
-    path('add_income/', add_missing_stream, name='add_income')
+    path('add_income/', add_missing_stream, name='add_income'),
+    path('deactivate_plan/<int:plan_id>', deactivate_plan, name='deactivate_plan')
 ]

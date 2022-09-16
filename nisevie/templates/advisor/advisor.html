@@ -5,6 +5,8 @@
 <!-- document body -->
 {% block body %}
 {% include 'navbar.html' %}
+
+
 <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom">
       <h1>Nisevie</h1>
@@ -16,15 +18,45 @@
     <section id="body_intro" class="d-flex flex-column justify-content-center">
       <div class="container">
         <div class="row">
-            <div class='col-sm-12 col-md-6'>
-                <h2>What is Plan Advisor?</h2>
-                <p><span class="text-muted"></span></p>
-                <p><span>Here, you can identify your regular income and use that information to manage your expenses. <br> From there, we can help you figure out how much you can save.</span></p>
+          <div class="col-sm-12 col-md-6">
+            <h2>Why Plan Advisor?</h2>
+            <p><span class="text-muted"></span></p>
+            <p><span>Everyone should save money in case of hardship because financial situations might change quickly.<br>
+              Saving money makes it easier to be more prepared for health emergencies,pursue an education or start a business.
+              All people would be able to safely and securely save even tiny sums of money.<br>
+              <br>
+              Here, you can identify your regular income and use that information to manage your expenses. 
+              From there, we can help you figure out how much you can save.</span></p>
+            <div class="row">
+              <div class="col-12 text-left">
                 <a href="{% url 'income_streams' %}" class="btn btn-sm color_accent border_accent p-2 rounded"><i class="bx bx-run"></i> Start</a>
+              </div>
             </div>
-            <div class="col-sm-12 col-md-6">
-            </div>
-          
+          </div>
+
+          <div class="col-sm-12 col-md-6">
+            <h2 class="h2 mb-5">How does it work</h2>
+            <ul>
+              <li>
+                <div>
+                  <span class="h3">Record Your Income Streams </span>
+                  <p>{% lorem 1 p random %}</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <span class="h3">Mention your expenses </span>
+                  <p>{% lorem 1 p random %}</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <span class="h3">Plan from suggestions </span>
+                  <p>{% lorem 1 p random %}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

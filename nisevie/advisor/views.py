@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User as AccountHolder
 from advisor.models import SavingPlan, Stream, StreamCategory
 from bankCredentials.models import BankAccount
+from bankCredentials.utils import deposit_into_account, withdraw_from_account   
 from .utils import add_stream, calculate_stream_total, calculate_plan_total
 
 def login_auth(_id):
@@ -22,7 +23,7 @@ def home_view(request):
     # saving plans 
     saving_plans = SavingPlan.objects.filter(target_account = bank_account)
     context = {
-        'plans': saving_plans
+        'bank_account':bank_account
     }
     return render(request, 'home.html', context)
 
@@ -145,10 +146,13 @@ def plan_create_view(request):
         time_interval = request.POST['time_interval']
         start_date = request.POST['start_date']
         end_date = request.POST['end_date']
-
+        plan_name = request.POST['plan_name']
+        
         income = Stream.objects.get(id= income_stream)
+        # reduce 
+        withdraw_from_account(bank_account.account_number, initial_amount)
 
-        new_plan = SavingPlan(target_account = bank_account, create_time=start_date, time_interval=time_interval, income_stream=income, initial_amount=initial_amount, current_amount=initial_amount, frequency_deposit_amount=initial_amount, is_current=True, allowed_withdraw_date=end_date)
+        new_plan = SavingPlan(plan_name=plan_name, target_account = bank_account, create_time=start_date, time_interval=time_interval, income_stream=income, initial_amount=initial_amount, current_amount=initial_amount, frequency_deposit_amount=initial_amount, is_current=True, allowed_withdraw_date=end_date)
         new_plan.save()
         return redirect('.')
 
@@ -166,7 +170,7 @@ def plans_view(request):
 
     context = {
         'plans': saving_plans,
-        'plans_count': len(saving_plans),
+        'plans_count': len(active_plans),
         'total_amount': balance,
         'bank_account':bank_account
     }
@@ -192,3 +196,16 @@ def add_missing_stream(request):
         'income_streams': income_streams
     }
     return render(request, 'advisor/income_streams.html', context)
+
+
+def deactivate_plan(request, plan_id):
+    holder_id = request.user.id
+    customer = AccountHolder.objects.get(id=holder_id)
+    bank_account = BankAccount.objects.get(account_holder = customer)
+
+    plan = SavingPlan.objects.get(id=plan_id)
+    plan.is_current = False
+    plan.save()
+    deposit_into_account(bank_account.account_number, plan.current_amount)
+
+    return redirect('/home/new_plan/')

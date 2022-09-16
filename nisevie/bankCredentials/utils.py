@@ -49,7 +49,7 @@ def new_customer_fixed_saving_plan(bank_acc_id, init_amount, rates, time_interva
 def deposit_into_account(acc_number: str, amount: float):
     bank_account = bank_acc.objects.get(account_number=acc_number)
     if bank_account is not None:
-        bank_account.current_balance = bank_account.current_balance + amount
+        bank_account.current_balance = float(bank_account.current_balance) + float(amount)
         bank_account.save()
     else:
         return False
@@ -58,8 +58,8 @@ def deposit_into_account(acc_number: str, amount: float):
 def withdraw_from_account(acc_number: str, amount: float):
     bank_account = bank_acc.objects.get(account_number=acc_number)
     if bank_account is not None:
-        if bank_account.current_balance > amount:
-            bank_account.current_balance = bank_account.current_balance - amount
+        if float(bank_account.current_balance) > float(amount):
+            bank_account.current_balance = float(bank_account.current_balance) - float(amount)
             bank_account.save()
     else:
         return False

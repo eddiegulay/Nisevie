@@ -95,36 +95,23 @@
           </div>
         {% else %}
         <div class="row my-3">
-            <div class="col-sm-12 col-md-6 col-lg-6 rounded">
-                <div class="card">
-                  <div class='card-body'>
-                    <h5 class="h5">Plan suggestion</h5>
-                  
-                    <p>
-                        {% lorem 1 p random %}
-
-                    </p>
-                    
-                    <p>
-                      <a href="{% url 'new_plan' %}" class="btn" >Create Plan </a>
-                    </p>
-                  </div>
-                  
-                </div>
-    
-              </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 rounded">
+          <div class="col-sm-12 col-md-6 col-lg-6 rounded">
               <div class="card">
-                <div class='card-body'><h5 class="h5">Best practices when saving</h5>
-                <p>
-                  {% lorem 1 p random %}
-                </p>
-                </div>
+                <div class='card-body'>
+                  <h5 class="h5">Plan suggestion</h5>
                 
+                  <p>
+                    Figures marked as amount remaining in the list of tabs above show the amount that remains untouched after all expenses have been paid. The negative value in the graph indicates that the respective income stream does not cover your expenses. A good option from there is to consider another source of income from which to begin saving. The income stream with the most remaining is the best one to begin saving with.
+                  </p>
+                  
+                  <p>
+                    <a href="{% url 'new_plan' %}" class="btn" >Create Plan </a>
+                  </p>
+                </div>
               </div>
   
             </div>
-          </div>
+        </div>
         {% endif %}
             
         

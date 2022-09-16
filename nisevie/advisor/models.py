@@ -28,6 +28,7 @@ class Stream(models.Model):
     
 
 class SavingPlan(models.Model):
+    plan_name = models.CharField(max_length=100)
     target_account = models.ForeignKey(to=BankAccount, verbose_name="target account", on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now=True)
     time_interval = models.IntegerField(default=0)
