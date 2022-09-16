@@ -26,3 +26,9 @@ def calculate_stream_total(query_set):
     for item in query_set:
         total += float(item['amount'])
     return total
+
+def calculate_plan_total(query_set):
+    total = 0
+    for item in query_set:
+        total += float(item.current_amount)
+    return total

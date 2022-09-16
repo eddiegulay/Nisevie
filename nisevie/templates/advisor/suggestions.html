@@ -52,7 +52,7 @@
           </div>
           
           {% for stream in income_list %}
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 rounded">
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 rounded mb-3">
             <div class="card">
               <div class="card-body">
                 <span class="color_accent"><b>{{stream.name}}</b></span>
@@ -97,14 +97,29 @@
         <div class="row my-3">
             <div class="col-sm-12 col-md-6 col-lg-6 rounded">
                 <div class="card">
-                  <div class='card-body'><h5 class="h5">Plan suggestion</h5></div>
+                  <div class='card-body'>
+                    <h5 class="h5">Plan suggestion</h5>
+                  
+                    <p>
+                        {% lorem 1 p random %}
+
+                    </p>
+                    
+                    <p>
+                      <a href="{% url 'new_plan' %}" class="btn" >Create Plan </a>
+                    </p>
+                  </div>
                   
                 </div>
     
               </div>
             <div class="col-sm-12 col-md-6 col-lg-6 rounded">
               <div class="card">
-                <div class='card-body'><h5 class="h5">Best practices when saving</h5></div>
+                <div class='card-body'><h5 class="h5">Best practices when saving</h5>
+                <p>
+                  {% lorem 1 p random %}
+                </p>
+                </div>
                 
               </div>
   
@@ -118,20 +133,11 @@
           <div class="col-12 my-3">
             <h4 class="h5">You might be interested</h5>
           </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 rounded">
+          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 rounded">
             <div class="card">
               <div class="card-body">
-                <span class="color_accent"><b>Stream Name</b></span>
-                <table class="table mt-2">
-                  <tr>
-                    <td>Expense Coverage</td>
-                    <td>90%</td>
-                  </tr>
-                  <tr>
-                    <td>Amount remaining</td>
-                    <td>120,000 Tzs.</td>
-                  </tr>
-                </table>
+                <span class="color_accent"><b>Service name</b></span>
+                
               </div>
             </div>
 

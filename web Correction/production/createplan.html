@@ -28,11 +28,10 @@
 
     <nav id="navbar" class="navbar nav-menu">
       <ul>
-        <li><a href="#" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-        <li><a href="#" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Advisor</span></a></li>
+        <li><a href="home.html" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+        <li><a href="advisor.html" class="nav-link scrollto"><i class="bx bx-money"></i> <span> Plan Advisor</span></a></li>
+        <li><a href="createplan.html" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Plans</span></a></li>
         <li><a href="#" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Agreement</span></a></li>
-        <li><a href="#" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>New Plan</span></a></li>
-        <li><a href="#" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Current Plan</span></a></li>
         <li><a href="#" class="nav-link scrollto"><i class="bx bx-exit"></i> <span>Logout</span></a></li>
       </ul>
     </nav>
@@ -46,39 +45,16 @@
           <h3 class="section-title"></h3>
           <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
             <div class="col-12">
-              <h3 class="h4 section-title">Create Your Plans Here And Submit them</h3>
+              <h2 class="h4 section-title"><em>Start a savings plan on your own terms.</em></h2>
               <p class="text-center no_income_stream">
                 <span class="text-center">
-                  Determine your revenues and add their details.
+                  Create a plan according to your own terms.
                 </span>
               </p>
             </div>
 
             <div class="col m-1 rounded">
-              <div id="income_stream" class="income_stream">
-                <!-- stream card -->
-                <div class="row p-3 d-flex justify-content-center">
-                  <div class="col-sm-10">
-                    <div class="card">
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-8">
-                            <div class="stream-item">
-                              <div class="success">Income name</div>
-                              <div>Deduce amount: <span> 123, 000</span></div>
-                              <div>Start: <span class="success">12 july 2022</span></div>
-                              <div>End: <span class="danger">13 sept 2022</span></div>
-                            </div>
-                          </div>
-                          <div class="col-4">
-                            <span>Edit</span><br><span>Delete</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <div id="income_stream" class="income_stream"></div>
             </div>
 
           </div>
@@ -87,41 +63,41 @@
             <form id="planForm" action="" method="post" role="form" class="">
               <div class="row">
                 <div class="col-md-12 form-group mb-3 autocomplete">
-                  <label for="Stream Name" class="mb-2">Income Name <i class="bx bxs-rename color_accent"></i></label>
-                  <select name="name" class="form-control" id="income_name" required>
-                    <option value="opt1">Salary</option>
-                    <option value="opt2">Meals And Accomodation</option>
-                    <option value="opt3">Other</option>
-                  </select>
+                    <label for="Stream Name" class="mb-2">Income Name <i class="bx bxs-rename color_accent"></i></label>
+                    <select  name="name" class="form-control" id="income_name" required>
+                        <option value="opt1" >Salary</option>
+                        <option value="opt2">Meals And Accomodation</option>
+                        <option value="opt3">Other</option>
+                      </select>
                 </div>
 
                 <div class="col-md-12 form-group mb-3">
-                  <label for="Stream Name" class="mb-2">Deduced Amount<i class="bx bx-money color_accent"></i></label>
-                  <input type="number" name="name" class="form-control" id="deduced_amount" placeholder="500,000"
-                    required>
+                  <label for="Stream Name" class="mb-2" >Deduced Amount<i class="bx bx-money color_accent"></i></label>
+                  <input type="number" name="name" class="form-control" id="deduced_amount" placeholder="500,000" required>
                 </div>
-
+                
                 <div class="col-md-6 form-group mb-3">
                   <label for="Stream Name" class="mb-2">Start Date <i class="bx bxs-calendar color_accent"></i></label>
-                  <input type="date" id="start_date" class="form-control" value="2022-09-13" min="2022-09-13"
-                    max="2022-12-31" required>
+                  <input type="date" id="start_date" class="form-control" value="2022-09-13" min="2022-09-13" max="2022-12-31" required>
                 </div>
 
                 <div class="col-md-6 form-group mb-3">
                   <label for="Stream Name" class="mb-2">End Date <i class="bx bxs-calendar color_accent"></i></label>
-                  <input type="date" id="end_date" class="form-control" value="2022-09-29" min="2022-09-13"
-                    max="2022-12-31">
+                  <input type="date" id="end_date" class="form-control" value="2022-09-29" min="2022-09-13" max="2022-12-31">
                 </div>
 
-                <div class="text-left"><button type="submit" id="add" class="btn btn-md rounded bg_accent text-white"
-                    onsubmit="addPlan()">Add</button></div>
+                <div class="text-left"><button type="submit"
+                  id="add" class="btn btn-md rounded bg_accent text-white" onsubmit="addPlan()">Add</button></div>
+              </div><br>
+              <div class="col-6">
+                <a href="advisor_record_incomes.html">Prepare budget first</a>
               </div>
             </form>
           </div>
 
         </div>
     </section>
-
+    
   </main>
 
 
@@ -145,5 +121,4 @@
   <script src="assets/js/user.js"></script>
 
 </body>
-
 </html>
