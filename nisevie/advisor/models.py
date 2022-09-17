@@ -17,7 +17,7 @@ class Stream(models.Model):
     linked_account = models.ForeignKey(to=BankAccount, on_delete=models.CASCADE)
     category = models.ForeignKey(to=StreamCategory, on_delete=models.CASCADE)
     amount = models.FloatField(default=0)
-    frequency = models.IntegerField()
+    tag = models.CharField(max_length=50, default='000000000000')
     time_interval = models.IntegerField(verbose_name="time interval in months")
     can_save_amount = models.FloatField(default=0)
     least_expenditure = models.FloatField(default=0)
@@ -33,14 +33,12 @@ class SavingPlan(models.Model):
     create_time = models.DateTimeField(auto_now=True)
     time_interval = models.IntegerField(default=0)
     income_stream = models.ForeignKey(to=Stream, on_delete=models.CASCADE)
-    initial_amount = models.BigIntegerField(default=0)
     current_amount = models.BigIntegerField(default=0)
     allowed_withdraw_date = models.DateTimeField()
-    is_frequency_allowed = models.BooleanField(default=False)
     deposit_frequency = models.IntegerField(default=1)
     frequency_deposit_amount = models.BigIntegerField(default=0)
-    next_action_date = models.DateField(null=True, auto_now=False, auto_now_add=False)
-    is_current = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    is_fixed = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Plan {self.create_time}"
+        return f"Plan {self.plan_name}"

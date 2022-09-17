@@ -2,7 +2,8 @@ nisevie/.env
 migrations/
 tests/
 bash.bat
-__pycache__/
 db.sqlite3
 nisevie
 Edited
+nisevie/advisor/__pycache__/
+nisevie/nisevie/__pycache__/

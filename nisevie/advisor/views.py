@@ -153,21 +153,20 @@ def plan_create_view(request):
         income_stream = request.POST['income_name']
         initial_amount = request.POST['initial_amount']
         time_interval = request.POST['time_interval']
-        start_date = request.POST['start_date']
         end_date = request.POST['end_date']
         plan_name = request.POST['plan_name']
-        
+        is_fixed = request.POST['is_fixed']
         income = Stream.objects.get(id= income_stream)
-        # reduce 
+
+        if int(is_fixed) == 1:
+            is_fixed = True
+        else:
+            is_fixed = False
+            
+        # move funds from main balance to savings
         withdraw_from_account(bank_account.account_number, initial_amount)
+        new_plan = SavingPlan(plan_name=plan_name, target_account = bank_account,time_interval=time_interval, income_stream=income, current_amount=initial_amount, frequency_deposit_amount=initial_amount, is_active=True, allowed_withdraw_date=end_date, is_fixed=is_fixed)
 
-        new_plan = SavingPlan(plan_name=plan_name, target_account = bank_account, create_time=start_date, time_interval=time_interval, income_stream=income, initial_amount=initial_amount, current_amount=initial_amount, frequency_deposit_amount=initial_amount, is_current=True, allowed_withdraw_date=end_date)
-
-        income = Stream.objects.get(id=income_stream)
-
-        new_plan = SavingPlan(target_account=bank_account, create_time=start_date, time_interval=time_interval,
-                              income_stream=income, initial_amount=initial_amount, current_amount=initial_amount,
-                              frequency_deposit_amount=initial_amount, is_current=True, allowed_withdraw_date=end_date)
         new_plan.save()
         return redirect('.')
 
@@ -181,7 +180,7 @@ def plans_view(request):
 
     # saving plans 
     saving_plans = SavingPlan.objects.filter(target_account=bank_account)
-    active_plans = SavingPlan.objects.filter(target_account=bank_account, is_current=True)
+    active_plans = SavingPlan.objects.filter(target_account=bank_account, is_active=True)
     balance = calculate_plan_total(active_plans)
 
     context = {
