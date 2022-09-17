@@ -30,11 +30,11 @@ class Stream(models.Model):
 class SavingPlan(models.Model):
     plan_name = models.CharField(max_length=100)
     target_account = models.ForeignKey(to=BankAccount, verbose_name="target account", on_delete=models.CASCADE)
-    create_time = models.DateTimeField(auto_now=True)
+    create_time = models.DateField(auto_now=True)
     time_interval = models.IntegerField(default=0)
     income_stream = models.ForeignKey(to=Stream, on_delete=models.CASCADE)
     current_amount = models.BigIntegerField(default=0)
-    allowed_withdraw_date = models.DateTimeField()
+    allowed_withdraw_date = models.DateField()
     deposit_frequency = models.IntegerField(default=1)
     frequency_deposit_amount = models.BigIntegerField(default=0)
     is_active = models.BooleanField(default=False)

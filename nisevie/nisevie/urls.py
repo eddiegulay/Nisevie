@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('bankCredentials.urls')),
     path('home/', include('advisor.urls')),
+    path('simulate/', include('simulation.urls'))
 ]
