@@ -1,0 +1,138 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Advisor {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+{% include 'navbar.html' %}
+
+<main id="main">
+
+  <section id="body_intro" class="d-flex flex-column justify-content-center">
+    <div class="container" id="advisor_income_register">
+      <div class="row">
+        <h3 class="section-title"></h3>
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+          <div class="col-12">
+            <h3 class="h4 section-title">Manage your Plans</h3>
+            
+          </div>
+
+          <div class="col m-1 rounded">
+            <div id="income_stream" class="income_stream">
+              <!-- stream card -->
+              <div class="row p-3 d-flex justify-content-center">
+                {% for plan in plans%}
+                <div class="col-sm-10 my-2 ">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-8">
+                          <div class="stream-item">
+                            <div class="text-success text-bold mb-1">{{plan.plan_name}}</div>
+                            <div>Stream: <span> {{plan.income_stream}} </span></div>
+                            <div>Deduce amount: <span> {{plan.frequency_deposit_amount}} </span></div>
+                            
+                            {% if plan.time_interval is 0 %}
+                            <div><span class="text-success">Save on deposit</span></div>
+                            {% else %}
+                            <div>Time inteval: <span class="text-success">{{plan.time_interval}} Months</span></div>
+                            {% endif %}
+                              
+                            
+                            <div>Release Date:  <span class="text-danger">{{plan.allowed_withdraw_date}}</span></div>
+                            <div>Saving Mode:  
+                            {% if plan.is_fixed %}
+                            <span class="text-primary"> Fixed plan
+                            {% else %}
+                            <span class="text-warning"> Flexible plan
+                            {% endif %}
+                              </span></div>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          
+                          {% if plan.is_active  and  not plan.is_fixed%}
+                          <div class="m-3"><span class="text-danger text-btn1" > <a href="{% url 'deactivate_plan' plan.id %}"> Terminate </a></span> </div>
+                          {% endif %}
+                          {% if not plan.is_active %}
+                          <div class=""><span class="text-danger text-sm bg-light p-2 rounded" > Terminated </span> </div>
+                          {% endif %}
+                            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {%endfor%}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+          <form id="" action="" method="post" role="form" class="">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-12 form-group mb-3">
+                <label for="Name" class="mb-2">Savings Name<i class="bx bx-money color_accent"></i></label>
+                <input type="text" name="plan_name" class="form-control" id="deduced_amount"
+                  required>
+              </div>
+
+              <div class="col-md-12 form-group mb-3 autocomplete">
+                <label for="Stream Name" class="mb-2">Income Name <i class="bx bxs-rename color_accent"></i></label>
+                <select name="income_name" class="form-control" id="income_name" required>
+                  
+                  {% for stream in streams %}
+                    <option value="{{stream.id}}">{{stream.name}}</option>
+                  {% endfor %}
+                    
+                </select>
+                <div class="col-12 text-right mb-3 mt-1"><a href="{% url 'income_streams' %}" target="_blank">Manage incomes </a> </div>
+              </div>
+
+              <div class="col-md-12 form-group mb-3">
+                <label for="Stream Name" class="mb-2">Saving Amount<i class="bx bx-money color_accent"></i></label>
+                <input type="number" name="initial_amount" class="form-control" id="deduced_amount" placeholder="500,000"
+                  required>
+              </div>
+
+              <div class="col-md-12 form-group mb-3">
+                <label for="Stream Name" class="mb-2">Frequency<i class="bx bx-repeat color_accent p-2"></i></label>
+                <select type="text" name="time_interval" class="form-control" id="time_interval"required>
+                  <option value='0'>On Deposit </option>
+                  <option value='1'>Each Month</option>
+                  <option value='2'>Every two months</option>
+                  <option value='3'>Every three months</option>
+                  <option value='4'>Every four months</option>
+                  <option value='5'>Every five months</option>
+                  <option value='6'>Every six months</option>
+                  <option value='12'>After One year</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 form-group mb-3">
+                <label for="Stream Name" class="mb-2">End Date <i class="bx bxs-calendar color_accent"></i></label>
+                <input type="date" id="end_date" name="end_date" class="form-control" value="2022-09-13" min="2022-09-14"
+                  max="2023-12-31" required>
+              </div>
+              <div class="col-md-6 form-group mb-3">
+                <label for="Stream Name" class="mb-2">Saving Mode <i class="bx bxs-calendar color_accent"></i></label>
+                <select class="form-control" name="is_fixed">
+                  <option value="0">Flexible plan</option>
+                  <option value="1">Fixed plan</option>
+                </select>
+              </div>
+              <div class="text-left"><button type="submit" id="add" class="btn btn-md rounded bg_accent text-white">Add</button></div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+  </section>
+
+</main>
+<script src="{% static 'assets/js/user.js' %}" ></script>
+{% endblock body%}

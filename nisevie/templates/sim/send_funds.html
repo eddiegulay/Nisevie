@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Control center {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+{% include 'navbar_sim.html' %}
+<main>
+    <section class="d-flex flex-column" >
+      <div class="mb-4 text-center" data-aos="zoom" data-aos-delay="0"> 
+        <h3 class="h4 section-title">Real time fund saving on deposit</h3>
+        </div>
+            <div class="row mb-4" id="addsource" data-aos="zoom" data-aos-delay="1">
+            <div class="col">
+                <div style="width: 350px;margin:auto">
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Text input -->
+                    <div class="mb-4 text-center">
+                    <label class="form-label" >Sender's Account</label>
+                    <select id="senderaccount" class="form-control text-center" onclick="autoFillAccountNo()">
+                        <option value="">Saved senders</option>
+                        <option value="98648639478">Salary</option>
+                        <option value="32349063284">Loan Board</option>
+                        <option value="84950074026">Stock Exchange</option>
+                    </select>
+                    </div>
+                
+                    <!-- Text input -->
+                    <div class="mb-4 text-center">
+                    <label class="form-label">Sender's Account No.</label>
+                    <input type="number" name="senders" id="sender" class="form-control text-center" required/>
+                    </div>
+                    <script>
+                      $("#senderaccount").on('change', function(){
+                        $("#sender").val($("#senderaccount").val())
+                      })
+                    </script>
+                    <!-- Text input -->
+                    <div class="mb-4 text-center">
+                      <label class="form-label">Reciever's Account No.</label>
+                      <select id="receivers" class="form-control text-center" name="receivers">
+                        {% for account in accounts %}
+                        <option value="{{account.account_number}}">{{account}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+
+                    <!-- Number input -->
+                    <div class="mb-4 text-center">
+                    <label class="form-label">Amount</label>
+                    <input type="number" name="amount" class="form-control text-center" required/>
+                    </div>
+        
+                    <div class="mb-4 text-center">
+                    <button type="submit" class="crdb-btn crdb-color1" style="width:25%">Send</button>
+                    </div>            
+                </form>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock body%}

@@ -1,0 +1,128 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Plans {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+{% include 'navbar.html' %}
+  <main id="main">
+    <section id="body_intro" class="d-flex flex-column justify-content-center">
+      <div class="container-fluid">
+        <div class="row bg-light d-flex align-items-center justify-content-center" style="height:320px">
+            <div class='col-6 text-center'>
+              {% if plans_count == 0 %}
+                <h2 class="h2">You don't have active plan yet...</h2>
+                <p class="col-12  mt-3">
+                  <a href="{% url 'new_plan' %}" class='btn'> Create New Plan </a>
+                </p>
+              {% else %}
+                <h1 class="display-1">{{total_amount}} Tzs.</h1>
+                <span>total saving balance</span>
+              {% endif %}
+            </div>
+        </div>
+      </div>
+      
+      {% if plans_count > 0 %}
+      <div class="container mt-3">
+        <div class="row mt-3">
+          <div class="col-12">
+            <h3 class="section-title">My Plans </h3>
+          <div class="col-sm-12 col-12 p-3">
+            <div class="card">
+              <div class="card-body">
+                <table class="table">
+                  <tbody>
+                    <tr class="text-bold">
+                      <td>Plan Name</td>
+                      <td>Income Stream</td>
+                      <td>Deposit amount</td>
+                      <td>Deposit inteval</td>
+                      <td>Current Balance</td>
+                      <td>Release date</td>
+                      <td>Active</td>
+                    </tr>
+                    {%for plan in plans%}
+                    <tr>
+                      <td>{{plan.plan_name}}</td>
+                      <td>{{plan.income_stream}}</td>
+                      <td>{{plan.frequency_deposit_amount}}</td>
+                      {% if plan.time_interval is 0 %}
+                      <td><span class="text-success">Save on deposit</span></td>
+                      {% else %}
+                      <td>{{plan.time_interval}} Month<span class="text-muted">(s)</span></td>
+                      {% endif %}
+                      <td>{{plan.current_amount}} </td> 
+                      <td>{{plan.allowed_withdraw_date}}</td>
+                      <td> 
+                      {% if plan.is_active %}
+                        <span class="text-success">active</span>
+                        {% else %}
+                        <span class="text-warning">Terminated</span>
+                      {% endif %}
+                         </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div
+      </div>
+      {% else %}
+      <div class="container mt-3">
+        <div class="row mt-3">
+          <div class="col-sm-12 col-md-6 pl-2">
+            <h3 class="h3">How To create a plan </h3>
+            <p class="p-2 m-2">
+              With few simple steps, you can create a new plan without any hustle 
+              <ol class='list-group list-group-flush p-2'>
+                <li class="list-group-item">
+                  <p> Click on "create plan" button, you will be redirected to plan manager</p>
+                </li>
+                <li class="list-group-item">
+                  <p> Fill in the required details in the form</p>
+                  <ul class='list-group p-2'>
+                    <li class="list-group-item">
+                      <p>Provide name for the plan you want to create (this will help you to identify what the plan was created for)</p>
+                    </li>
+                    <li class="list-group-item">
+                      <p>Select income stream or add by clicking on <span class="color_accent">Manage incomes</span></p>
+                    </li>
+                    <li class="list-group-item">
+                      <p>Provide the amount that you want to be moved into savings periodically</p>
+                    </li>
+                    <li class="list-group-item">
+                      <p>Choose time period for repeated saving deposits or select 'on Deposit' for action to take place when any amount is deposited in your account</p>
+                    </li>
+                    <li class="list-group-item">
+                      <p>Select when do you want the saving process to end</p>
+                    </li>
+                    <li class="list-group-item">
+                      <p>Choose saving mode (fixed or flexible). With fixed saving you won't be able to terminate the plan until the date you set is reached.</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="list-group-item">
+                  <p> Click on Add to initialize the plan (make sure you confirm the inputs before adding a plan)</p>
+                </li>
+
+              </ol>
+            </p>
+          </div>
+
+          <div class="col-sm-12 col-md-6">
+            <h3 class="h3">What happens after Creating a plan </h3>
+            <p>
+              After creating a plan, a series of funds moving will be initialized. When a specified time period is reached the respective amount of money will be moved into savinigs provided that the main amount (income stream amount is not exceede) or else no funds will be moved into savings.
+              When the release date is reached, the accumulated amount of money from savings will be returned back into main account.
+            </p>
+          </div>
+        </div>  
+      </div>
+      {% endif %}
+      
+    </section>
+  </main>
+{% endblock body%}
