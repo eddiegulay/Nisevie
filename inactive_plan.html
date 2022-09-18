@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Plans {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+{% include 'navbar.html' %}
+  <main id="main">
+    <section id="body_intro" class="d-flex flex-column justify-content-center">
+      <div class="container-fluid">
+        <div class="row bg-light d-flex align-items-center justify-content-center" style="height:320px">
+            <div class='col-6 text-center'>
+              {% if plans_count == 0 %}
+                <h2 class="h2">You don't have active plan yet...</h2>
+                <p class="col-12  mt-3">
+                  <a href="{% url 'new_plan' %}" class='btn'> Create New Plan </a>
+                </p>
+              {% else %}
+                <h1 class="display-1">{{total_amount}} Tzs.</h1>
+                <span>total saving balance</span>
+              {% endif %}
+            </div>
+        </div>
+      </div>
+      
+      {% if plans_count > 0 %}
+      <div class="container mt-3">
+        <div class="row mt-3">
+          <div class="col-12">
+            <h3 class="section-title">My Plans </h3>
+          <div class="col-sm-12 col-12 p-3">
+            <div class="card">
+              <div class="card-body">
+                <table class="table">
+                  <tbody>
+                    <tr class="text-bold">
+                      <td>Plan Name</td>
+                      <td>Income Stream</td>
+                      <td>Deposit amount</td>
+                      <td>Deposit inteval</td>
+                      <td>Current Balance</td>
+                      <td>Release date</td>
+                      <td>Active</td>
+                    </tr>
+                    {%for plan in plans%}
+                    <tr>
+                      <td>{{plan.plan_name}}</td>
+                      <td>{{plan.income_stream}}</td>
+                      <td>{{plan.frequency_deposit_amount}}</td>
+                      <td>{{plan.time_interval}} Month(s)</td>
+                      <td>{{plan.current_amount}} </td> 
+                      <td>{{plan.allowed_withdraw_date}}</td>
+                      <td> 
+                      {% if plan.is_current %}
+                        active
+                        {% else %}
+                        inactive
+                      {% endif %}
+                         </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div
+      </div>
+      {% else %}
+      <div class="container mt-3">
+        <div class="row mt-3">
+          <div class="col-sm-12 col-md-6">
+            <h3 class="h3">How To create a plan </h3>
+            {% lorem 1 p random %}
+          </div>
+
+          <div class="col-sm-12 col-md-6">
+            <h3 class="h3">What happens after Creating a plan </h3>
+            {% lorem 1 p random %}
+          </div>
+        </div>  
+      </div>
+      {% endif %}
+      
+    </section>
+  </main>
+{% endblock body%}

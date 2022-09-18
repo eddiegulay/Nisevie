@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Advisor {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+{% include 'navbar.html' %}
+<main id="main">
+
+    <section id="body_expenses" class="d-flex flex-column justify-content-center">
+      <div class="container p-5">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 p-3">
+                <h3 class="h4 section-title" style="margin-top:60px"><em><span class="text-center"> {{expense.name}} </span></em></h3>
+                
+                <p class="text-center no_income_stream">
+                  <span class="text-center"> 
+                    Identify and associate your expenses with your incomes and know how much you can save without deviating from your regular spending plan.
+                  </span>
+                </p>
+            </div>
+            <div class="col-sm-12 col-md-6 p-3">
+                <form action="" method="post" role="form" class="" style="width:500px">
+                    {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12 form-group mb-3 autocomplete">
+                    <label for="Stream Name" class="mb-2">Expense Name <i class="bx bxs-rename color_accent"></i></label>
+                    <input type="text" name="stream_name" class="form-control" id="expense_name" value="{{expense.name}}" required>
+                    </div>
+
+                    <div class="col-md-12 form-group mb-3">
+                        <label for="id_stream_amount" class="mb-2">Amount <i class="bx bx-money color_accent"></i></label>
+                        <input type="text" name="stream_amount" class="form-control" id="expense_value" value="{{expense.amount}}" required>
+                    </div>
+
+                    <div class="col-md-6 form-group mb-3">
+                        <label for="Stream Name" class="mb-2">Time Interval <i class="bx bxs-watch color_accent"></i></label>
+                        <select type="text" name="time_interval" class="form-control" value="{{expense.time_interval}}"required>
+                        <option value='1'>Each Month</option>
+                        <option value='2'>Every two months</option>
+                        <option value='3'>Every three months</option>
+                        <option value='4'>Every four months</option>
+                        <option value='5'>Every five months</option>
+                        <option value='6'>Every six months</option>
+                        <option value='12'>After One year</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 form-group mb-3">
+                        <label for="stream_frequ" class="mb-2"> How Often <i class="bx bx-repeat color_accent"></i></label>
+                        <input type="text" name="stream_frequency" class="form-control" id="id_stream_frequency" value="{{expense.frequency}}" required>
+                    </div>
+
+                    <div class="col-md-6 form-group mb-3">
+                        <label for="can_save" class="mb-2"> How much can you save </label>
+                        <input type="text" name="can_save_amount" class="form-control" id="id_can_save" value="{{expense.can_save_amount}}" required>
+                    </div>
+
+                    <div class="col-md-6 form-group mb-3">
+                        <label for="Stream Name" class="mb-2">  Least expected expenditure </label>
+                        <input type="text" name="least_expenditure" class="form-control" id="id_least_expenditure" value="{{expense.least_expenditure}}" required>
+                    </div>
+
+                    <div class="col-6">
+                    <button type="submit" class="btn btn-md rounded bg_accent text-white">Update expense</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+      </div>
+    </section>
+
+</main>
+{% endblock body%}
