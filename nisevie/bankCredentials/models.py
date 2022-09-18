@@ -25,9 +25,41 @@ class SavingAccount(models.Model):
     create_time = models.DateTimeField(auto_now=True)
 
 
+# Unused (out of requirements)
 class SavingsDetail(SavingAccount):
     pass
 
 
 class FixedDepositDetail(SavingAccount):
     pass
+
+
+# Recommendation and services
+class BankService(models.Model):
+    service_name = models.CharField( max_length=50)
+    service_description = models.CharField( max_length = 500)
+    tag_is_loan = models.BooleanField( default = False)
+    tag_is_savings_account = models.BooleanField(default=False)
+    tag_is_insurance = models.BooleanField(default=False)
+    origin_link = models.CharField( max_length=250)
+
+    def __str__(self):
+        return self.service_name
+    
+
+class ServiceBenefit(models.Model):
+    parent_service = models.ForeignKey(to=BankService, on_delete=models.CASCADE)
+    benefit = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.parent_service.service_name
+
+class ServiceRequirements(models.Model):
+    parent_service = models.ForeignKey(to=BankService, on_delete=models.CASCADE)
+    string_list = models.CharField(max_length=1000)
+    minimum =  models.IntegerField(default=0)
+    maximum = models.IntegerField(default=0)
+    duration = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.parent_service.service_name

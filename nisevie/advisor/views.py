@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from django.contrib.auth.models import User as AccountHolder
 from advisor.models import SavingPlan, Stream, StreamCategory
-from bankCredentials.models import BankAccount
+from bankCredentials.models import BankAccount,ServiceRequirements, BankService, ServiceBenefit
 from bankCredentials.utils import deposit_into_account, withdraw_from_account   
 from .utils import add_stream, calculate_stream_total, calculate_plan_total
 
@@ -44,7 +44,18 @@ def advisor_record_incomes(request):
         stream_amount = request.POST['stream_amount']
         time_interval = request.POST['time_interval']
         stream_frequency = request.POST['stream_frequency']
-        add_stream(account.id, False, stream_name, stream_amount, stream_frequency, time_interval, 0, 0, 0)
+
+        add_stream(
+            _linked_account=account.id, 
+            is_expense=False, 
+            _name=stream_name, 
+            _amount=stream_amount, 
+            _tag=stream_frequency, 
+            _interval=time_interval, 
+            _can_save=0, 
+            _least_expenditure=0, 
+            _time_delay=0)
+
         return redirect('/home/streams/')
 
     # active income streams
@@ -164,12 +175,38 @@ def advisor_suggestion_view(request):
     income_streams = Stream.objects.filter(category=stream_category, linked_account=account).values()
     income_list = Stream.objects.filter(category=stream_category, linked_account=account)
     total_income = calculate_stream_total(list(income_streams))
+    income_expense_difference = total_income - total_expenses
 
+    # default recommendation data
+    opt_loans = 0
+    loan_data_bucket = []
+    if income_expense_difference <= 0:
+        loan_requirements = ServiceRequirements.objects.filter(minimum__lte=income_expense_difference, maximum__gte=income_expense_difference)
+        opt_loans = len(loan_requirements)
+        if opt_loans >= 1:
+            loan_data_bucket = []
+            for loan in loan_requirements:
+                recommended_loans = BankService.objects.filter(id = loan.parent_service.id)
+                for loan_item in recommended_loans:
+                    loan_requirements = ServiceRequirements.objects.filter(parent_service = loan_item)
+                    loan_benefits = ServiceBenefit.objects.filter(parent_service = loan_item)
+                    loan_data_bucket.append(
+                        {
+                            'loan': loan_item,
+                            'requirements': loan_requirements,
+                            'benefits': loan_benefits
+                        }
+                    )
+
+    
     context = {
+        'funds_difference': income_expense_difference,
         'total_income': total_income,
         'total_expense': total_expenses,
         'expense_list': expense_list,
-        'income_list': income_list
+        'income_list': income_list, 
+        'loans_availbale': opt_loans,
+        'loan_data_bucket': loan_data_bucket
     }
 
     return render(request, 'advisor/suggestions.html', context)

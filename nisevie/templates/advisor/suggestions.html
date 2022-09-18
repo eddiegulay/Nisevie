@@ -51,6 +51,23 @@
             <h4 class="h5">Breakdown</h5>
           </div>
           
+          <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 rounded mb-3">
+            <div class="card">
+              <div class="card-body">
+                <span class="color_accent"><b>All Streams</b></span>
+                <table class="table mt-2">
+                  <tr>
+                    <td>Amount remaining when expenses are covered</td>
+                    <td>
+                        {{ funds_difference }}
+                    </td>
+                  </tr>
+                  
+                </td>
+                </table>
+              </div>
+            </div>
+          </div>
           {% for stream in income_list %}
           <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 rounded mb-3">
             <div class="card">
@@ -58,7 +75,7 @@
                 <span class="color_accent"><b>{{stream.name}}</b></span>
                 <table class="table mt-2">
                   <tr>
-                    <td>Amount remaining</td>
+                    <td>Amount remaining when expenses are covered</td>
                     <td>
                         {{ stream.amount|sub:total_expense }}
                     </td>
@@ -68,7 +85,6 @@
                 </table>
               </div>
             </div>
-
           </div>
           {% endfor %}
             
@@ -83,16 +99,78 @@
             <div class="col-sm-12 col-md-6 col-lg-6 rounded">
               <div class="card">
                 <div class="card-body">
-                  <span class="h5 color_accent">Expenses are too high because:</span>
+                  <span class="h5 color_accent">Expenses are high than your income</span>
                   <p class="mt-3">
-  
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"> Adjust Your expenses by reducing unecessary items</li>
+                      <li class="list-group-item"> For limited Funds Only include items that are wanted</li>
+                      <li class="list-group-item"> Try to cut 10% as savings to expenses that are not fixed and recurring like 'entertainment' </li>
+                    </ul>
                   </p>
-                  </table>
                 </div>
               </div>
   
             </div>
+            <div class="col-sm-12 col-md-6 col-lg-6 rounded">
+              <div class="card">
+                <div class="card-body">
+                  <span class="h5 color_accent">Suggestions</span>
+                  <p class="mt-3">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"> Add another income stream to cover the ramaining {{ -1|mul:funds_difference}} Tzs.</li>
+                      <li class="list-group-item"> If urgent, You would like to opt for a loan. Check list of loans below</li>
+                    </ul>
+                  </p>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="row"> 
+          
+          {% if loans_availbale <= 0 %}
+          <div class="col-12 my-3">
+            <h4 class="h5">Please visit <a target="_blank" href="https://crdbbank.co.tz/en/accounts/personal/Borrow/10"> CRDB borrowing services for more information</a></h5>
+          </div>
+          {% else %}
+          <div class="col-12 my-3">
+            <h4 class="h5">Suggested loans</h5>
+          </div>
+          
+          {% for loan_data in loan_data_bucket %}
+          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 rounded">
+            <div class="card">
+              <div class="card-body">
+                <span class="color_accent"><b>{{loan_data.loan.service_name}}</b></span>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"> {{loan_data.loan.service_description}}</li>
+                  <li class="list-group-item"> 
+                    <span class="h6 text-bold">benefits</span><br>
+                    {% for benefit in loan_data.benefits %}
+                    {{benefit.benefit}}
+                    {% endfor %}
+                  </li>
+                  <li class="list-group-item"> 
+                    <span class="h6 text-bold">Payment duration</span><br>
+                    {% for req in loan_data.requirements %}
+                    Up to {{req.duration}} Months
+                    {% endfor %}
+                  </li>
+                  <li class="list-group-item"> 
+                    <span class="h6 text-bold">Loan Size</span><br>
+                    {% for size in loan_data.requirements %}
+                    From <span class="text-primary text-bold">{{size.minimum}} Tzs.</span> - To <span class="text-primary text-bold">{{size.maximum}} Tzs.</span>
+                    {% endfor %}
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+          {% endif %} 
+        </div>
         {% else %}
         <div class="row my-3">
           <div class="col-sm-12 col-md-6 col-lg-6 rounded">
@@ -115,24 +193,6 @@
             </div>
         </div>
         {% endif %}
-            
-        
-
-        <div class="row"> 
-          <div class="col-12 my-3">
-            <h4 class="h5">You might be interested</h5>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 rounded">
-            <div class="card">
-              <div class="card-body">
-                <span class="color_accent"><b>Service name</b></span>
-                
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
       </div>
     </section>
 
