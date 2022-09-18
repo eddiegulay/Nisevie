@@ -61,5 +61,6 @@ def withdraw_from_account(acc_number: str, amount: float):
         if float(bank_account.current_balance) > float(amount):
             bank_account.current_balance = float(bank_account.current_balance) - float(amount)
             bank_account.save()
+            return True
     else:
         return False

@@ -202,10 +202,14 @@ def plan_create_view(request):
             is_fixed = False
             
         # move funds from main balance to savings
-        withdraw_from_account(bank_account.account_number, initial_amount)
-        new_plan = SavingPlan(plan_name=plan_name, target_account = bank_account,time_interval=time_interval, income_stream=income, current_amount=initial_amount, frequency_deposit_amount=initial_amount, is_active=True, allowed_withdraw_date=end_date, is_fixed=is_fixed)
-
-        new_plan.save()
+        condition = withdraw_from_account(bank_account.account_number, initial_amount)
+        if condition:
+            new_plan = SavingPlan(plan_name=plan_name, target_account = bank_account,time_interval=time_interval, income_stream=income, current_amount=initial_amount, frequency_deposit_amount=initial_amount, is_active=True, allowed_withdraw_date=end_date, is_fixed=is_fixed)
+            new_plan.save()
+        else:
+            new_plan = SavingPlan(plan_name=plan_name, target_account = bank_account,time_interval=time_interval, income_stream=income, current_amount=0, frequency_deposit_amount=initial_amount, is_active=True, allowed_withdraw_date=end_date, is_fixed=is_fixed)
+            new_plan.save()
+        
         return redirect('.')
 
     return render(request, 'advisor/create_plan.html', {'plans': saving_plans, 'streams': income_list})
@@ -259,7 +263,7 @@ def deactivate_plan(request, plan_id):
     bank_account = BankAccount.objects.get(account_holder = customer)
 
     plan = SavingPlan.objects.get(id=plan_id)
-    plan.is_current = False
+    plan.is_active = False
     plan.save()
     deposit_into_account(bank_account.account_number, plan.current_amount)
 
