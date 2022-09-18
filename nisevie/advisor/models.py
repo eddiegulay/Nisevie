@@ -39,6 +39,7 @@ class SavingPlan(models.Model):
     frequency_deposit_amount = models.BigIntegerField(default=0)
     is_active = models.BooleanField(default=False)
     is_fixed = models.BooleanField(default=False)
+    next_deposit_on = models.DateField(auto_now=True)
 
     def __str__(self):
         return f"Plan {self.plan_name}"
