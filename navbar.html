@@ -1,0 +1,14 @@
+<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+<header id="header" class="d-flex flex-column justify-content-center">
+
+  <nav id="navbar" class="navbar nav-menu">
+    <ul>
+      <li><a href="{% url 'home' %}" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+      <li><a href="{% url 'advisor' %}" class="nav-link scrollto"><i class="bx bx-money"></i> <span>Plan Advisor</span></a></li>
+      <li><a href="{% url 'plans_list' %}" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Plans</span></a></li>
+      <li><a href="{% url 'new_plan' %}" class="nav-link"><i class="bx bx-file-blank"></i> <span>New Plan</span></a></li>
+      <li><a href=" {% url 'customer_logout' %}" class="nav-link scrollto"><i class="bx bx-exit"></i> <span>Logout</span></a></li>
+    </ul>
+  </nav>
+
+</header>

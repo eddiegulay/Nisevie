@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {%load static%}
+<!-- document title-->
+{% block title %} Login {% endblock title %}
+
+<!-- document body -->
+{% block body %}
+
+<body id="hero" class="d-flex flex-column justify-content-center">
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <section>
+    <div class="container" data-aos="zoom-in" data-aos-delay="5">
+      <div class="row">
+        <div class="col-sm-12 col-md-5">
+          <h1>CRDB Nisevie</h1>
+          <p>
+            <span
+              class="typed"
+              data-typed-items="Are you looking for a better way to budget your money?, Do you need a savings plan?, Look no further!, We are here for you."
+            ></span>
+          </p>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          <div class="container">
+            <div class="card-body">
+              <form method="post">
+                {% csrf_token %}
+              <div class="form-outline mb-4">
+                <span class="section-title h1">Login</span>
+              </div>
+              <div class="form-outline m-2" id="mobile_input">
+                <label class="form-label" for="mobile_number">Registered Phone number</label>
+                <input type="text" name="phoner_number" id="mobile_number" class="form-control"  placeholder="+255123456789" />
+                <span
+                  class="btn btn-sm btn-success float-right mt-2"
+                  id="get_otp"
+                >
+                  Get OTP
+              </span>
+              </div>
+              <div class="form-outline m-2" style="display: none" id="fill_otp">
+                <label class="form-label" for="OTP">Code recieved</label>
+                <input type="text" id="otp" class="form-control" />
+
+                <input type='submit'
+                  class="btn btn-sm btn-success float-right mt-2"
+                  id="btn_login"
+                  value="Login"
+                >
+                <span class="btn btn-sm btn-warning float-right mt-2" id="resend_otp">
+                  Resend OTP
+                </span>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    var n_pass = 0;
+    $("#get_otp").on("click", function () {
+      var number = $("#mobile_number").val();
+      if (number.length < 10) {
+        alert("please provide a correct number format");
+      } else {
+        $.get("/otp/" + number, (data, status) => {
+          if (data["status"] == 200) {
+            n_pass = data["otp"];
+            $("#fill_otp").slideToggle();
+            $("#mobile_input").slideToggle();
+            localStorage.setItem('customer', data['customer'])
+          }
+        });
+      }
+    });
+
+    $("#btn_login").on("click", function () {
+      var pass = $("#otp").val();
+      if (n_pass == 0) {
+        alert("please wait for OTP to arrive");
+      } else {
+        if (n_pass == pass) {
+          var holder = localStorage.getItem('customer')
+          window.location.href = "/"+holder+"/"
+        } else {
+          alert("incorrect code number");
+        }
+      }
+    });
+    $("#resend_otp").on("click", function () {
+      $("#fill_otp").slideToggle();
+      $("#mobile_input").slideToggle();
+    });
+  </script>
+
+  {% endblock body %}
+
+  <!-- page preloader -->
+  {% include 'pre_loader.html' %}
+</body>
