@@ -41,8 +41,7 @@
           </div>
 
           <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-            <form action="" method="post" role="form" class="">
-                {% csrf_token %}
+            <form method="post">{% csrf_token %}
               <div class="row">
                 <div class="col-md-12 form-group mb-3 autocomplete">
                   <label for="Stream Name" class="mb-2">Expense Name <i class="bx bxs-rename color_accent"></i></label>
@@ -56,7 +55,7 @@
   
                   <div class="col-md-6 form-group mb-3">
                     <label for="Stream Name" class="mb-2">Time Interval <i class="bx bxs-watch color_accent"></i></label>
-                    <select type="text" name="time_interval" class="form-control" required>
+                    <select name="time_interval" class="form-control" required>
                       <option value='1'>Each Month</option>
                       <option value='2'>Every two months</option>
                       <option value='3'>Every three months</option>
@@ -67,9 +66,9 @@
                     </select>
                   </div>
   
-                  <div class="col-md-6 form-group mb-3">
+                  <div class="col-md-6 form-group mb-3 collapse">
                     <label for="stream_frequ" class="mb-2"> How Often <i class="bx bx-repeat color_accent"></i></label>
-                    <input type="text" name="stream_frequency" class="form-control" id="id_stream_frequency" placeholder="1 for Once every month" required>
+                    <input type="text" name="stream_frequency" class="form-control" id="id_stream_frequency" calue="0" required>
                   </div>
 
                   <div class="col-md-6 form-group mb-3">
@@ -82,9 +81,10 @@
                     <input type="text" name="least_expenditure" class="form-control" id="id_least_expenditure" placeholder="" required>
                   </div>
 
-                <div class="col-6">
-                  <button type="submit" class="btn btn-md rounded bg_accent text-white">Add expense</button>
-                </div>
+                  
+                  <div class="col-12">
+                    <input type="submit" class="btn btn-md rounded bg_accent text-white" value="Add expense" onClick="this.form.submit()">
+                  </div>
 
             </form>
 
@@ -93,8 +93,10 @@
         </div>
         <div class="row">
           <div class="col-4 mt-5">
-            <a href="{% url 'suggestions' %}" class="text-white btn btn-sm bg_accent"><i
-                class="bx bx-right-arrow-alt mx-2"></i>Analyze</a>
+            <a href="{% url 'income_streams' %}" class="text-white btn btn-sm bg_accent"><i class="bx bx-left-arrow-alt mx-2"></i>edit income</a>
+          </div>
+          <div class="col-4 mt-5">
+            <a href="{% url 'suggestions' %}" class="text-white btn btn-sm bg_accent"><i class='bx bxs-analyse mx-2'></i>Analyze</a>
           </div>
         </div>
       </div>

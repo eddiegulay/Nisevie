@@ -36,17 +36,19 @@ def advisor_view(request):
 
 # plan advisor record income streams
 def advisor_record_incomes(request):
+    holder = AccountHolder.objects.get(id=request.user.id)  # account holder
+    account = BankAccount.objects.get(account_holder=holder)  # account linked to income stream
+
     if request.POST:
         stream_name = request.POST['stream_name']
         stream_amount = request.POST['stream_amount']
         time_interval = request.POST['time_interval']
         stream_frequency = request.POST['stream_frequency']
-        add_stream(request.user.id, False, stream_name, stream_amount, stream_frequency, time_interval, 0, 0, 0)
+        add_stream(account.id, False, stream_name, stream_amount, stream_frequency, time_interval, 0, 0, 0)
         return redirect('/home/streams/')
 
     # active income streams
-    holder = AccountHolder.objects.get(id=request.user.id)  # account holder
-    account = BankAccount.objects.get(account_holder=holder)  # account linked to income stream
+    
     stream_category = StreamCategory.objects.get(
         category_name="Income")  # category classification separating Expenses from Incomes
 
@@ -59,6 +61,8 @@ def advisor_record_incomes(request):
 
 
 def advisor_record_expenses(request):
+    holder = AccountHolder.objects.get(id=request.user.id)  # account holder
+    account = BankAccount.objects.get(account_holder=holder)  # account linked to income stream
     if request.POST:
         stream_name = request.POST['stream_name']
         stream_amount = request.POST['stream_amount']
@@ -67,13 +71,21 @@ def advisor_record_expenses(request):
         can_save_amount = request.POST['can_save_amount']
         least_expenditure = request.POST['least_expenditure']
 
-        add_stream(request.user.id, True, stream_name, stream_amount, stream_frequency, time_interval, can_save_amount,
-                   least_expenditure, 0)
+        add_stream(
+            _linked_account=account.id, 
+            is_expense=True, 
+            _name=stream_name, 
+            _amount=stream_amount, 
+            _tag=0, 
+            _interval=time_interval, 
+            _can_save=can_save_amount, 
+            _least_expenditure=least_expenditure, 
+            _time_delay=0)
+
         return redirect('/home/expenses/')
 
     # active expense streams
-    holder = AccountHolder.objects.get(id=request.user.id)  # account holder
-    account = BankAccount.objects.get(account_holder=holder)  # account linked to income stream
+    
     stream_category = StreamCategory.objects.get(
         category_name="Expense")  # category classification separating Expenses from Incomes
 
@@ -104,11 +116,37 @@ def edit_stream_expense(request, _id):
 
         stream.save()
         return redirect('/home/expenses/')
-
     context = {
         'expense': stream
     }
     return render(request, 'advisor/edit_expense.html', context)
+
+
+
+def delete_income_stream(request, _id):
+    stream = Stream.objects.get(id=_id)
+    stream.delete()
+
+    return redirect("/home/streams/")
+
+
+def edit_income_stream(request, _id):
+    stream = Stream.objects.get(id=_id)
+    if request.POST:
+        stream.name = request.POST['stream_name']
+        stream.amount = request.POST['stream_amount']
+        stream.time_interval = request.POST['time_interval']
+        stream.tag = request.POST['stream_frequency']
+        stream.can_save_amount = request.POST['can_save_amount']
+        stream.least_expenditure = request.POST['least_expenditure']
+
+        stream.save()
+        return redirect('/home/streams/')
+
+    context = {
+        'expense': stream
+    }
+    return render(request, 'advisor/edit_income.html', context)
 
 
 def advisor_suggestion_view(request):

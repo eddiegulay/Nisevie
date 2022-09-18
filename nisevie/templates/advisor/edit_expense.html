@@ -46,9 +46,9 @@
                         </select>
                     </div>
 
-                    <div class="col-md-6 form-group mb-3">
+                    <div class="col-md-6 form-group mb-3 collapse">
                         <label for="stream_frequ" class="mb-2"> How Often <i class="bx bx-repeat color_accent"></i></label>
-                        <input type="text" name="stream_frequency" class="form-control" id="id_stream_frequency" value="{{expense.frequency}}" required>
+                        <input type="text" name="stream_frequency" class="form-control" id="id_stream_frequency" value="{{expense.tag}}" required>
                     </div>
 
                     <div class="col-md-6 form-group mb-3">
@@ -61,7 +61,7 @@
                         <input type="text" name="least_expenditure" class="form-control" id="id_least_expenditure" value="{{expense.least_expenditure}}" required>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12">
                     <button type="submit" class="btn btn-md rounded bg_accent text-white">Update expense</button>
                     </div>
 
