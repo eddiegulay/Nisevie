@@ -876,30 +876,3 @@ button[type=submit]:hover {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-  margin-top: 0;
-  background: #f2f3f5;
-  font-size: 14px;
-}
-
-.dropdown-item:hover{
-  color: #3AAF4A;
-}
-
-.dropdown-item {
-  border-radius: 5px;
-} 
-
-.user-profile {
-  position: fixed;
-  right: 20px;
-  top: 80px;
-  z-index: 9998;
-  border: 0;
-  transition: all 0.4s;
-  cursor: pointer;
-}
-#profile{
-}
