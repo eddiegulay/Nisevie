@@ -181,7 +181,8 @@ def advisor_suggestion_view(request):
     opt_loans = 0
     loan_data_bucket = []
     if income_expense_difference <= 0:
-        loan_requirements = ServiceRequirements.objects.filter(minimum__lte=income_expense_difference, maximum__gte=income_expense_difference)
+        _income_expense_difference = -1 * income_expense_difference
+        loan_requirements = ServiceRequirements.objects.filter(minimum__lte=_income_expense_difference, maximum__gte=_income_expense_difference)
         opt_loans = len(loan_requirements)
         if opt_loans >= 1:
             loan_data_bucket = []
