@@ -38,13 +38,13 @@ That's it! Nisevie is designed to help you save money and plan your budget with 
 
 ## Credits
 
-Nisevie was created by [Your Company Name] and is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+Nisevie was created by Team B (vector spacce) and supervised by CRDB-UDSM FINHUB
 
 ## Contributors
 
 - Gulay, Edgar [https://github.com/eddygulled]
 - Eric Sam.
-- Faith Sooi
+- Faith Sooi [https://github.com/fayesooi]
 - John Paul [https://github.com/JohnPaulKundy]
 
 If you have any questions, comments, or suggestions, please contact us at [Your Company Email].
