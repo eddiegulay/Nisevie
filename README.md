@@ -42,9 +42,9 @@ Nisevie was created by [Your Company Name] and is licensed under the [MIT Licens
 
 ## Contributors
 
-- Gulay, Edgar [www.github.com/eddygulled]
+- Gulay, Edgar [https://github.com/eddygulled]
 - Eric Sam.
 - Faith Sooi
-- John Paul
+- John Paul [https://github.com/JohnPaulKundy]
 
 If you have any questions, comments, or suggestions, please contact us at [Your Company Email].
