@@ -34,7 +34,31 @@ Nisevie's authentication system is simple and secure. Users only need to provide
 4. View the recommendation section to see loan services that suit you best in case of running short of money.
 5. Monitor your saving plan and history using the dashboard.
 
-That's it! Nisevie is designed to help you save money and plan your budget with ease. Try it out today and start achieving your financial goals.
+## Project Setup
+
+To access the Nisevie project, follow these steps:
+
+1. Clone the project to your local machine using the following command:
+
+```git clone https://github.com/eddygulled/Nisevie.git```
+
+
+2. Once the cloning process is complete, navigate to the project's root directory using the following command:
+
+3. Install the project's dependencies by running the following command:
+
+```pip install -r requirements.txt```
+
+This will install all the required packages specified in the `requirements.txt` file.
+
+4. After the installation process is complete, start the local development server using the following command:
+
+```python manage.py runserver```
+
+5. Open your web browser and navigate to `http://localhost:8000/` to access the Nisevie web app.
+
+Note: The above steps assume that you have Python and Git installed on your local machine. If not, you need to install them first before proceeding with the above steps.
+
 
 ## Credits
 
