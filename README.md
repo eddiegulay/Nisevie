@@ -40,20 +40,26 @@ To access the Nisevie project, follow these steps:
 
 1. Clone the project to your local machine using the following command:
 
-```git clone https://github.com/eddygulled/Nisevie.git```
+```
+git clone https://github.com/eddygulled/Nisevie.git
+```
 
 
 2. Once the cloning process is complete, navigate to the project's root directory using the following command:
 
 3. Install the project's dependencies by running the following command:
 
-```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 
 This will install all the required packages specified in the `requirements.txt` file.
 
 4. After the installation process is complete, start the local development server using the following command:
 
-```python manage.py runserver```
+```
+python manage.py runserver
+```
 
 5. Open your web browser and navigate to `http://localhost:8000/` to access the Nisevie web app.
 
