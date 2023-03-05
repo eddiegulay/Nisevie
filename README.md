@@ -6,7 +6,7 @@ Nisevie is a web app that helps bank customers save money by allocating a small 
 
 - **Framework**: Django
 - **SMS API**: Twilio
-- **Machine Learning Algorithms**: Used for loan service recommendations
+<!-- - **Machine Learning Algorithms**: Used for loan service recommendations -->
 
 ## Authentication
 
